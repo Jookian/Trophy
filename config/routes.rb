@@ -1,6 +1,19 @@
 Rails.application.routes.draw do
   devise_for :users
+
   root to: "pages#home"
+
+  get "/categories", to: "categories#index"
+  get "/categories/:id", to: "categories#show"
+
+  post "/user_goals", to: "user_goals#create" #form attention
+
+  get "/goals/:id", to: "goals#show"
+  post "badges/:id/user_badges", to: "user_badges#create"
+
+
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
