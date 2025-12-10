@@ -8,11 +8,10 @@
 <% else %>
   <% @goal_progress.each do |item| %>
     <div class="goal-card">
-      <h3><%= item[:goal].name %></h3>
+    <h3><%= link_to item[:goal].name, goal_path(item[:goal]), class: "goal-link" %></h3>
 
       <p>Progression : <%= item[:progress] %>%</p>
 
-      <%= link_to "Voir les trophy", goal_badges_path(item[:goal]), class: "btn btn-secondary" %>
     </div>
 
     <hr>
