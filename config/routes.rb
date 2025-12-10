@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  get "/categories", to: "categories#index"
-  get "/categories/:id", to: "categories#show"
+  get "/categories", to: "categories#index", as: :categories
+  get "/categories/:id", to: "categories#show", as: :category
 
   post "/user_goals", to: "user_goals#create" #form attention
 
