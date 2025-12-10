@@ -1,0 +1,21 @@
+<h1>Dashboard</h1>
+
+<h2>🎯 Tes objectifs en cours</h2>
+
+<% if @goal_progress.empty? %>
+  <p>Tu n'as pas encore d'objectifs.</p>
+  <%= link_to "Choisir un objectif", categories_path, class: "btn btn-primary" %>
+<% else %>
+  <% @goal_progress.each do |item| %>
+    <div class="goal-card">
+      <h3><%= item[:goal].name %></h3>
+
+      <p>Progression : <%= item[:progress] %>%</p>
+
+      <%= link_to "Voir les trophy", goal_badges_path(item[:goal]), class: "btn btn-secondary" %>
+    </div>
+
+    <hr>
+  <% end %>
+  <%= link_to "➕ Ajouter un nouvel objectif", categories_path, class: "btn btn-primary" %>
+<% end %>
