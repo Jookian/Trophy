@@ -1,0 +1,10 @@
+
+<h1>Catégories</h1>
+
+<div style="display:flex; flex-wrap:wrap; gap:16px;">
+  <% @categories.each do |cat| %>
+    <%= link_to category_path(cat), style: "display:block; width:100px; height:100px; border:1px solid #ccc; border-radius:8px; text-align:center; line-height:100px;" do %>
+      <%= cat.name %>
+    <% end %>
+  <% end %>
+</div>
