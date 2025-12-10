@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
+  get "dashboard", to: "dashboard#index"
+
   get "/categories", to: "categories#index"
   get "/categories/:id", to: "categories#show"
 
