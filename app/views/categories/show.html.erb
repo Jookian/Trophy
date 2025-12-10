@@ -1,0 +1,18 @@
+<h1><%= @category.name %></h1>
+
+<%= form_with url: user_goals_path, method: :post, local: true do %>
+
+  <div style="display:flex; flex-wrap:wrap; gap:16px;">
+    <% @goals.each do |goal| %>
+      <label style="display:block; width:100px; height:100px; border:1px solid #ccc; border-radius:8px; text-align:center; padding-top:30px;">
+        <%= check_box_tag "goal_ids[]", goal.id %>
+        <%= goal.name %>
+      </label>
+    <% end %>
+  </div>
+
+  <div style="margin-top:20px;">
+    <%= submit_tag "Valider", style: "padding:10px 20px;" %>
+  </div>
+
+<% end %>
