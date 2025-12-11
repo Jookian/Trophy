@@ -17,7 +17,7 @@ class DashboardController < ApplicationController
 
       {
         user_goal: user_goal,
-        goal: goal,
+        goal: user_goal.goal,
         progress: progress
       }
     end
