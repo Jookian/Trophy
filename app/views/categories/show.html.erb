@@ -2,7 +2,9 @@
 
 <div style="display:flex; flex-wrap:wrap; gap:16px;">
   <% @goals.each do |goal| %>
-    <%= link_to goal_path(goal), style: "display:block; width:120px; height:120px; border:1px solid #ccc; border-radius:8px; text-align:center; padding-top:40px; text-decoration:none;" do %>
+    <%= link_to user_goals_path(goal_ids: [goal.id]),
+            method: :post,
+            data: { turbo_method: :post }, style: "display:block; width:120px; height:120px; border:1px solid #ccc; border-radius:8px; text-align:center; padding-top:40px; text-decoration:none;" do %>
       <%= goal.name %>
     <% end %>
   <% end %>

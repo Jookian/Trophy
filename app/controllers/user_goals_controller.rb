@@ -8,6 +8,6 @@ class UserGoalsController < ApplicationController
       end
     end
 
-    redirect_to "/pages/home", notice: "Objectifs ajoutés."
+    redirect_to goal_path(goal_ids.first), notice: "Objectifs ajoutés."
   end
 end
