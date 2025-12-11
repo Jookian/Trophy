@@ -1,0 +1,17 @@
+<h1><%= @goal.name %></h1>
+
+<h2>🎖 Trophy à débloquer</h2>
+
+<% @badges.each do |badge| %>
+  <h3><%= badge.title %></h3>
+
+  <p><%= badge.description %></p>
+
+  <% if @validated_badges.include?(badge.id) %>
+    <span class="badge badge-success">Déjà validé</span>
+  <% else %>
+    <%= button_to "Valider", user_badges_path(badge_id: badge.id), method: :post, class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+
+<%= link_to "⬅️ Retour au dashboard", dashboard_path, class: "btn btn-secondary mt-3" %>

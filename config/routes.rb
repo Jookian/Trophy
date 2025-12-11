@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post "/user_goals", to: "user_goals#create" #form attention
 
   get "/goals/:id", to: "goals#show", as: :goal
-  post "badges/:id/user_badges", to: "user_badges#create"
+  post "/user_badges", to: "user_badges#create", as: :user_badges
 
 
 
