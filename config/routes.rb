@@ -12,9 +12,7 @@ Rails.application.routes.draw do
 
   get "/goals/:id", to: "goals#show", as: :goal
   post "/user_badges", to: "user_badges#create", as: :user_badges
-
-
-
+  resources :user_goals, only: [:destroy]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

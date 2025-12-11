@@ -10,4 +10,11 @@ class UserGoalsController < ApplicationController
 
     redirect_to goal_path(goal_ids.first), notice: "Objectifs ajoutés."
   end
+
+  def destroy
+    user_goal = current_user.user_goals.find(params[:id])
+    user_goal.destroy
+
+    redirect_to dashboard_path, notice: "Objectif supprimé" 
+  end
 end
