@@ -1,25 +1,27 @@
-<h1>Dashboard</h1>
+<div class="mobile-app">
 
-<h2>🎯 Tes objectifs en cours</h2>
+  <div class="dashboard-container">
+    <h2 class="dashboard-title">Vos objectifs en cours</h2>
 
-<% if @goal_progress.empty? %>
-  <p>Tu n'as pas encore d'objectifs.</p>
-  <%= link_to "Choisir un objectif", categories_path, class: "btn btn-primary" %>
-<% else %>
-  <% @goal_progress.each do |item| %>
-    <div class="goal-card">
-      <h3>
-        <%= link_to item[:goal].name, goal_path(item[:goal]), class: "goal-link" %>
-      </h3>
+    <div class="goals-grid">
+      <% @goal_progress.each do |item| %>
+        <% goal = item[:goal] %>
 
-      <p>Progression : <%= item[:progress] %>%</p>
+        <%= link_to goal_path(goal), class: "goal-card" do %>
+          <%= image_tag "goals/#{goal_image_filename(goal.name)}", class: "goal-image" %>
 
-      <%= link_to "Supprimer",
-            user_goal_path(item[:goal].user_goals.find_by(user: current_user)),
-            data: { turbo_method: :delete, turbo_confirm: "Supprimer ce goal ?" } %>
+          <div class="goal-overlay">
+            <h3 class="goal-name"><%= goal.name %></h3>
+
+            <div class="goal-progress-badge">
+              <%= image_tag "icon-trophy-small.svg", class: "badge-icon" %>
+              <span><%= item[:progress] %>%</span>
+            </div>
+          </div>
+        <% end %>
+
+      <% end %>
     </div>
-
-    <hr>
-  <% end %>
-  <%= link_to "➕ Ajouter un nouvel objectif", categories_path, class: "btn btn-primary" %>
-<% end %>
+  </div>
+  <%= render "shared/navbar_dashboard" %>
+</div>
