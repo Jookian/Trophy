@@ -25,10 +25,11 @@
         <% if @validated_badges.include?(badge.id) %>
           <span class="validated">✔</span>
         <% else %>
-          <%= button_to "🏆",
-                user_badges_path(badge_id: badge.id),
+          <%= button_to user_badges_path(badge_id: badge.id),
                 method: :post,
-                class: "validate-btn" %>
+                class: "validate-btn" do %>
+            <%= image_tag "icon-trophy-small.svg", class: "validate-icon" %>
+          <% end %>
         <% end %>
       </div>
     </div>

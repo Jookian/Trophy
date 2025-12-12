@@ -33,7 +33,7 @@
   align-items: center;
 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
-  margin-bottom: 16px;
+  margin: 16px 16px 16px 16px;
 }
 
 .trophy-card-text h3 {
@@ -70,6 +70,7 @@
   margin: 20px 0;
   overflow: hidden;
   position: relative;
+  margin: 20px auto;
 }
 
 .progress-bar {
@@ -88,4 +89,15 @@
   color: white;
   font-weight: bold;
   font-size: 12px;
+}
+
+.validate-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.validate-btn {
+  padding: 4px;
+  background: none;
+  border: none;
 }
