@@ -1,11 +1,15 @@
-<h1><%= @category.name %></h1>
+<div class="categories-container">
+  <h2 class="categories-title"><%= @category.name %></h2>
 
-<div style="display:flex; flex-wrap:wrap; gap:16px;">
-  <% @goals.each do |goal| %>
-    <%= link_to user_goals_path(goal_ids: [goal.id]),
-            method: :post,
-            data: { turbo_method: :post }, style: "display:block; width:120px; height:120px; border:1px solid #ccc; border-radius:8px; text-align:center; padding-top:40px; text-decoration:none;" do %>
-      <%= goal.name %>
+  <div class="categories-grid">
+    <% @goals.each do |goal| %>
+      <%= link_to user_goals_path(goal_ids: [goal.id]), method: :post, data: { turbo_method: :post }, class: "category-card" do %>
+        <%= image_tag "goals/#{goal_image_filename(goal.name)}", class: "category-image" %>
+
+        <div class="category-overlay">
+          <h3 class="category-name"><%= goal.name %></h3>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
