@@ -10,3 +10,13 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.mobile-app {
+  max-width: 390px;
+  /* largeur iPhone Figma */
+  margin: 0 auto;
+  min-height: 100vh;
+
+  background: #C9D4FF;
+  /* ton fond bleu clair */
+}
