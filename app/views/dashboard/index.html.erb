@@ -6,22 +6,29 @@
       <% @goal_progress.each do |item| %>
         <% goal = item[:goal] %>
 
-        <%= link_to goal_path(goal), class: "goal-card" do %>
-          <%= image_tag "goals/#{goal_image_filename(goal.name)}", class: "goal-image" %>
+        <div style="position: relative;">
+          <!-- wrapper pour positionner l'emoji -->
+          <%= link_to goal_path(goal), class: "goal-card" do %>
+            <%= image_tag "goals/#{goal_image_filename(goal.name)}", class: "goal-image" %>
 
-          <div class="goal-overlay">
-            <h3 class="goal-name"><%= goal.name %></h3>
+            <div class="goal-overlay">
+              <h3 class="goal-name"><%= goal.name %></h3>
 
-            <div class="goal-progress-badge">
-              <%= image_tag "icon-trophy-small.svg", class: "badge-icon" %>
-              <span><%= item[:progress] %>%</span>
+              <div class="goal-progress-badge">
+                <%= image_tag "icon-trophy-small.svg", class: "badge-icon" %>
+                <span><%= item[:progress] %>%</span>
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
 
-        <%= link_to "Supprimer",
-            user_goal_path(item[:goal].user_goals.find_by(user: current_user)),
-            data: { turbo_method: :delete, turbo_confirm: "Supprimer ce goal ?" } %>
+          <% if item[:goal].user_goals.find_by(user: current_user) %>
+            <%= link_to user_goal_path(item[:goal].user_goals.find_by(user: current_user)),
+                data: { turbo_method: :delete, turbo_confirm: "Supprimer ce goal ?" },
+                class: "delete-goal-link" do %>
+              🗑️
+            <% end %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
