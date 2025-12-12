@@ -1,17 +1,39 @@
-<h1><%= @goal.name %></h1>
+<div class="goal-show-container">
+  <h1><%= @goal.name %></h1>
+  <h2>🎖 Trophy à débloquer</h2>
+</div>
 
-<h2>🎖 Trophy à débloquer</h2>
+<!-- Progression -->
+<div class="progress-container">
+  <% total = @goal.badges.count %>
+  <% done = @validated_badges.count { |id| @goal.badges.pluck(:id).include?(id) } %>
+  <% percent = total.zero? ? 0 : ((done.to_f / total) * 100).round %>
 
-<% @badges.each do |badge| %>
-  <h3><%= badge.title %></h3>
+  <div class="progress-bar" style="width: <%= percent %>%"></div>
+  <div class="progress-text"><%= percent %>%</div>
+</div>
 
-  <p><%= badge.description %></p>
+<div class="trophy-list">
+  <% @badges.each do |badge| %>
+    <div class="trophy-card">
+      <div class="trophy-card-text">
+        <h3><%= badge.title %></h3>
 
-  <% if @validated_badges.include?(badge.id) %>
-    <span class="badge badge-success">Déjà validé</span>
-  <% else %>
-    <%= button_to "Valider", user_badges_path(badge_id: badge.id), method: :post, class: "btn btn-primary" %>
+        <p><%= badge.description %></p>
+      </div>
+
+      <div class="trophy-card-action">
+        <% if @validated_badges.include?(badge.id) %>
+          <span class="validated">✔</span>
+        <% else %>
+          <%= button_to "🏆",
+                user_badges_path(badge_id: badge.id),
+                method: :post,
+                class: "validate-btn" %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
-<% end %>
+</div>
 
 <%= link_to "⬅️ Retour au dashboard", dashboard_path, class: "btn btn-secondary mt-3" %>
