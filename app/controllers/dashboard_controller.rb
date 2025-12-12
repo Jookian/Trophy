@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
   before_action :authenticate_user!
+  helper :goals
 
   def index
     @user_goals = current_user.user_goals
