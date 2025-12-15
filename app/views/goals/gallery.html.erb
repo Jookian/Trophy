@@ -1,4 +1,8 @@
-<h2>Galerie de photos</h2>
+<h2><%= @goal.name %></h2>
+<p>
+  <%= @goal.photos.count == 0 ? "0 pin" : pluralize(@goal.photos.count, "pin") %>
+</p>
+
 <%= link_to "Retour à l'objectif", goal_path(@goal) %>
 <div class="gallery-grid">
   <% @goal.photos.each do |photo| %>
@@ -12,5 +16,3 @@
     </div>
   <% end %>
 </div>
-
-
