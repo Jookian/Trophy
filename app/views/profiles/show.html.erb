@@ -1,0 +1,73 @@
+<h1>Mon profil</h1>
+
+<!-- PHOTO -->
+<div>
+  <% if @user.photo.attached? %>
+    <%= image_tag @user.photo, width: 100 %>
+  <% end %>
+
+  <button onclick="toggleForm('photo-form')">
+    Changer de photo de profil
+  </button>
+
+  <div id="photo-form" style="display:none;">
+    <%= form_with model: @user, url: profile_path, method: :patch do |f| %>
+      <%= f.file_field :photo %>
+      <%= f.submit "Enregistrer" %>
+    <% end %>
+  </div>
+</div>
+
+<hr>
+
+<!-- NOM -->
+<p><strong>Pseudo :</strong> <%= @user.name %></p>
+
+<button onclick="toggleForm('name-form')">
+  Modifier mon pseudo
+</button>
+
+<div id="name-form" style="display:none;">
+  <%= form_with model: @user, url: profile_path, method: :patch do |f| %>
+    <%= f.text_field :name %>
+    <%= f.submit "Enregistrer" %>
+  <% end %>
+</div>
+
+<hr>
+
+<!-- MOTIVATION -->
+<p><strong>Phrase de motivation :</strong></p>
+<p><%= @user.motivation_text %></p>
+
+<button onclick="toggleForm('motivation-form')">
+  Modifier ma phrase de motivation
+</button>
+
+<div id="motivation-form" style="display:none;">
+  <%= form_with model: @user, url: profile_path, method: :patch do |f| %>
+    <%= f.text_area :motivation_text %>
+    <%= f.submit "Enregistrer" %>
+  <% end %>
+</div>
+
+<hr>
+
+<!-- TROPHÉES -->
+<p><strong>Trophées remportés :</strong> <%= @trophies_count %></p>
+
+<ul>
+  <% @user_badges.each do |user_badge| %>
+    <li>
+      <strong><%= user_badge.badge.title %></strong><br>
+      <%= user_badge.badge.description %>
+    </li>
+  <% end %>
+</ul>
+<script>
+  function toggleForm(id) {
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === "none" ? "block" : "none";
+  }
+</script>
+<%= render "shared/navbar_navigation" %>
