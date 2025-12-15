@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   post "/user_badges", to: "user_badges#create", as: :user_badges
   resources :user_goals, only: [:destroy]
 
+  post "/goals/:id/photos", to: "goals#add_photos"
+  get "/goals/:id/gallery", to: "goals#gallery"
+  delete "/goals/:id/photos/:photo_id", to: "goals#destroy_photo"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

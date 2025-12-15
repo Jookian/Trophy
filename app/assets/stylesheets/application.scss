@@ -22,3 +22,49 @@
   background: #C9D4FF;
   /* ton fond bleu clair */
 }
+
+.photos-carousel {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+.gallery-grid {
+  column-count: 2;          // 2 colonnes
+  column-gap: 10px;         // espace entre colonnes
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.gallery-item {
+  break-inside: avoid;      // empêche de casser l'image entre colonnes
+  margin-bottom: 10px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 16px;    // coins arrondis pour l'image
+  }
+}
+
+.custom-upload-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #079494;
+  font-weight: bold;
+  color: #FFF;
+
+  span {
+    margin-left: 6px;
+  }
+}
