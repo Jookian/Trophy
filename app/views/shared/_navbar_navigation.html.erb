@@ -1,24 +1,24 @@
-<div class="bottom-navbar">
+<nav class="bottom-navbar">
 
-  <!-- Icon info -->
-  <div class="nav-item left">
-    <%= image_tag "icon-info.svg", class: "nav-icon" %>
+  <!-- Back -->
+  <div class="nav-left">
+    <%= link_to "javascript:history.back()" do %>
+      <%= image_tag "icon-back.svg", class: "nav-icon" %>
+    <% end %>
   </div>
 
-  <!-- Home icon -->
-  <div class="nav-item">
-    <%= image_tag "icon-home.svg", class: "nav-icon" %>
+  <!-- Home -->
+  <div class="nav-center">
+    <%= link_to dashboard_path do %>
+      <%= image_tag "icon-home.svg", class: "nav-icon" %>
+    <% end %>
   </div>
 
-  <!-- Back icon -->
-  <div class="nav-item">
-    <%= image_tag "icon-back.svg", class: "nav-icon" %>
+  <!-- Profile -->
+  <div class="nav-right">
+    <%= link_to profile_path do %>
+      <%= image_tag "icon-profile.svg", class: "nav-icon" %>
+    <% end %>
   </div>
 
-  <!-- Profile section -->
-  <div class="nav-profile right">
-
-    <%= image_tag "icon-profile.svg", class: "profile-icon" %>
-  </div>
-
-</div>
+</nav>
