@@ -1,0 +1,16 @@
+<h2>Galerie de photos</h2>
+<%= link_to "Retour à l'objectif", goal_path(@goal) %>
+<div class="gallery-grid">
+  <% @goal.photos.each do |photo| %>
+    <div class="gallery-item">
+      <%= image_tag photo, width: 300 %>
+
+      <%= button_to "Supprimer",
+        "/goals/#{@goal.id}/photos/#{photo.id}",
+        method: :delete,
+        data: { confirm: "Supprimer cette photo ?" } %>
+    </div>
+  <% end %>
+</div>
+
+
