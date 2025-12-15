@@ -63,3 +63,23 @@
     <% end %>
   <% end %>
 </div>
+
+<div id="trophy-popup"
+     class="trophy-popup"
+     data-controller="trophy-popup"
+     data-trophy-popup-show-value="<%= flash[:notice] == 'trophy_unlocked' %>">
+
+  <div class="trophy-popup-content">
+    <h2>🎉 Félicitations Léo !</h2>
+    <p>Vous avez débloqué un nouveau trophy.</p>
+
+    <div class="popup-buttons">
+      <button class="popup-close" data-action="trophy-popup#close">OK</button>
+
+      <button class="popup-share">
+        Partager à un ami
+      </button>
+    </div>
+  </div>
+
+</div>
