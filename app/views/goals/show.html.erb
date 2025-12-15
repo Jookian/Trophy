@@ -1,6 +1,7 @@
 <div class="goal-show-container">
   <h1><%= @goal.name %></h1>
 </div>
+<%= link_to "⬅️ Retour au dashboard", dashboard_path, class: "btn btn-secondary mt-3" %>
 
 <!-- Progression -->
 <div class="progress-container">
@@ -36,5 +37,29 @@
   <% end %>
 </div>
 
-<%= link_to "⬅️ Retour au dashboard", dashboard_path, class: "btn btn-secondary mt-3" %>
-<%= render "shared/navbar_navigation" %>
+<h3>Photos inspirantes</h3>
+
+<%= form_with url: "/goals/#{@goal.id}/photos",
+              method: :post,
+              local: true,
+              html: { multipart: true, class: "upload-form" } do %>
+
+  <label for="photos-input" class="custom-upload-button">
+    📷 <span>Ajouter des photos</span>
+  </label>
+
+  <%= file_field_tag "photos[]",
+      id: "photos-input",
+      multiple: true,
+      onchange: "this.form.submit()",
+      style: "display:none;" %>
+
+<% end %>
+
+<div class="photos-carousel">
+  <% @goal.photos.each do |photo| %>
+    <%= link_to "/goals/#{@goal.id}/gallery" do %>
+      <%= image_tag photo, height: 120 %>
+    <% end %>
+  <% end %>
+</div>
