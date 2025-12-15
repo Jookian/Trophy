@@ -8,7 +8,7 @@ class UserBadgesController < ApplicationController
       current_user.user_badges.create(badge: badge)
     end
 
-    redirect_to goal_path(badge.goal), notice: "Badge validé 🎉"
+    redirect_to goal_path(badge.goal), notice: "trophy_unlocked"
   end
 end
 
