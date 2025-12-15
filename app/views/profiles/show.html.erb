@@ -1,73 +1,121 @@
-<h1>Mon profil</h1>
+<div class="container py-4 mb-5 text-center page-profile">
 
-<!-- PHOTO -->
-<div>
-  <% if @user.photo.attached? %>
-    <%= image_tag @user.photo, width: 100 %>
-  <% end %>
-
-  <button onclick="toggleForm('photo-form')">
-    Changer de photo de profil
-  </button>
-
-  <div id="photo-form" style="display:none;">
-    <%= form_with model: @user, url: profile_path, method: :patch do |f| %>
-      <%= f.file_field :photo %>
-      <%= f.submit "Enregistrer" %>
+  <!-- PHOTO DE PROFIL -->
+  <div class="mb-4">
+    <% if @user.photo.attached? %>
+      <%= image_tag @user.photo,
+            class: "rounded-circle mb-3 mx-auto d-block",
+            style: "width: 120px; height: 120px; object-fit: cover;" %>
+    <% else %>
+      <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mb-3 mx-auto"
+           style="width: 120px; height: 120px;">
+        <span class="text-muted">Photo</span>
+      </div>
     <% end %>
+
+    <button class="btn btn-outline-primary btn-sm"
+            onclick="toggleForm('photo-form')">
+      Changer la photo
+    </button>
+
+    <div id="photo-form" class="mt-3" style="display:none;">
+      <%= form_with model: @user, url: profile_path, method: :patch, class: "d-flex flex-column align-items-center" do |f| %>
+        <%= f.file_field :photo, class: "form-control mb-2 w-75" %>
+        <%= f.submit "Enregistrer", class: "btn btn-primary btn-sm" %>
+      <% end %>
+    </div>
   </div>
+
+  <!-- PSEUDO -->
+  <div class="card mb-3 mx-auto" style="max-width: 420px;">
+    <div class="card-body text-center">
+
+      <h5 class="card-title mb-2">Pseudo</h5>
+
+      <p class="fw-semibold mb-2">
+        <%= @user.name.presence || "Non renseigné" %>
+      </p>
+
+      <button class="btn btn-link p-0"
+              onclick="toggleForm('name-form')">
+        Modifier mon pseudo
+      </button>
+
+      <div id="name-form" class="mt-3" style="display:none;">
+        <%= form_with model: @user, url: profile_path, method: :patch, class: "d-flex flex-column align-items-center" do |f| %>
+          <%= f.text_field :name, class: "form-control mb-2 w-75 text-center" %>
+          <%= f.submit "Enregistrer", class: "btn btn-primary btn-sm" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PHRASE DE MOTIVATION -->
+  <div class="card mb-3 mx-auto" style="max-width: 420px;">
+    <div class="card-body text-center">
+
+      <h5 class="card-title mb-2">Phrase de motivation</h5>
+
+      <p class="text-muted">
+        <%= @user.motivation_text.presence || "Non renseignée" %>
+      </p>
+
+      <button class="btn btn-link p-0"
+              onclick="toggleForm('motivation-form')">
+        Modifier ma phrase
+      </button>
+
+      <div id="motivation-form" class="mt-3" style="display:none;">
+        <%= form_with model: @user, url: profile_path, method: :patch, class: "d-flex flex-column align-items-center" do |f| %>
+          <%= f.text_area :motivation_text,
+                class: "form-control mb-2 w-75 text-center",
+                rows: 3 %>
+          <%= f.submit "Enregistrer", class: "btn btn-primary btn-sm" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COMPTEUR DE TROPHÉES -->
+  <div class="card text-center mb-3 mx-auto" style="max-width: 420px;">
+    <div class="card-body">
+      <h5 class="card-title">🏆 Trophées remportés</h5>
+      <p class="display-6 fw-bold mb-0">
+        <%= @trophies_count %>
+      </p>
+    </div>
+  </div>
+
+  <!-- LISTE DES TROPHÉES -->
+  <div class="card mb-3 mx-auto" style="max-width: 420px;">
+    <div class="card-body text-center">
+      <h5 class="card-title mb-3">Mes trophées</h5>
+
+      <% if @user_badges.any? %>
+        <ul class="list-group list-group-flush text-start">
+          <% @user_badges.each do |user_badge| %>
+            <li class="list-group-item text-center">
+              <strong><%= user_badge.badge.title %></strong><br>
+              <small class="text-muted">
+                <%= user_badge.badge.description %>
+              </small>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="text-muted mb-0">Aucun trophée pour le moment.</p>
+      <% end %>
+    </div>
+  </div>
+
 </div>
 
-<hr>
-
-<!-- NOM -->
-<p><strong>Pseudo :</strong> <%= @user.name %></p>
-
-<button onclick="toggleForm('name-form')">
-  Modifier mon pseudo
-</button>
-
-<div id="name-form" style="display:none;">
-  <%= form_with model: @user, url: profile_path, method: :patch do |f| %>
-    <%= f.text_field :name %>
-    <%= f.submit "Enregistrer" %>
-  <% end %>
-</div>
-
-<hr>
-
-<!-- MOTIVATION -->
-<p><strong>Phrase de motivation :</strong></p>
-<p><%= @user.motivation_text %></p>
-
-<button onclick="toggleForm('motivation-form')">
-  Modifier ma phrase de motivation
-</button>
-
-<div id="motivation-form" style="display:none;">
-  <%= form_with model: @user, url: profile_path, method: :patch do |f| %>
-    <%= f.text_area :motivation_text %>
-    <%= f.submit "Enregistrer" %>
-  <% end %>
-</div>
-
-<hr>
-
-<!-- TROPHÉES -->
-<p><strong>Trophées remportés :</strong> <%= @trophies_count %></p>
-
-<ul>
-  <% @user_badges.each do |user_badge| %>
-    <li>
-      <strong><%= user_badge.badge.title %></strong><br>
-      <%= user_badge.badge.description %>
-    </li>
-  <% end %>
-</ul>
+<!-- JS MINIMAL -->
 <script>
   function toggleForm(id) {
     const el = document.getElementById(id);
     el.style.display = el.style.display === "none" ? "block" : "none";
   }
 </script>
-<%= render "shared/navbar_navigation" %>
