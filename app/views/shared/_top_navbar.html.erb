@@ -1,0 +1,12 @@
+<nav class="top-navbar">
+  <div class="top-nav-left">
+    <%= link_to dashboard_path do %>
+      <%= image_tag "logo-trophy.png", class: "top-nav-logo" %>
+    <% end %>
+  </div>
+
+  <div class="top-nav-right">
+    <%= image_tag "icon-trophy-small.svg", class: "top-nav-trophy-icon" %>
+    <span class="top-nav-trophy-count"><%= current_user_trophies_validated %>/<%= current_user_trophies_total %></span>
+  </div>
+</nav>

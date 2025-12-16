@@ -3,6 +3,7 @@ class DashboardController < ApplicationController
   helper :goals
 
   def index
+    @show_welcome_popup = session.delete(:show_welcome_popup)
     @user_goals = current_user.user_goals
 
     @goal_progress = @user_goals.map do |user_goal|
