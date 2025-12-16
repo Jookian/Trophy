@@ -10,7 +10,15 @@ class GoalsController < ApplicationController
   @goal = current_user.goals.find(params[:id])
 
   if params[:photos].present?
-    @goal.photos.attach(params[:photos])
+    params[:photos].each do |photo|
+      begin
+        # On force l'attach, même formats inconnus
+        @goal.photos.attach(photo)
+      rescue => e
+        Rails.logger.warn("Impossible d'attacher #{photo.original_filename}: #{e.message}")
+        next
+      end
+    end
   end
 
   redirect_to goal_path(@goal)

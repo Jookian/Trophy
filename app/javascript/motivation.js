@@ -57,21 +57,25 @@ const phrases = [
 "Crois en ton potentiel",
 "Tu es sur la bonne voie",
 ];
-document.addEventListener("turbo:load", () => {
+
+function initMotivation() {
   const button = document.getElementById("phrase-btn");
   const popup = document.getElementById("motivation-popup");
   const text = document.getElementById("motivation-text");
 
-  if (!button || !popup || !text) return;
+  if (button && popup && text) {
+    button.addEventListener("click", function() {
+      const randomIndex = Math.floor(Math.random() * phrases.length);
+      text.textContent = phrases[randomIndex];
 
-  button.addEventListener("click", () => {
-    const randomIndex = Math.floor(Math.random() * phrases.length);
-    text.textContent = phrases[randomIndex];
+      popup.classList.add("show");
 
-    popup.classList.add("show");
+      setTimeout(() => {
+        popup.classList.remove("show");
+      }, 5000);
+    });
+  }
+}
 
-    setTimeout(() => {
-      popup.classList.remove("show");
-    }, 5000);
-  });
-});
+document.addEventListener("DOMContentLoaded", initMotivation);
+document.addEventListener("turbo:load", initMotivation);
