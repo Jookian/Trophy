@@ -16,10 +16,22 @@
   </head>
 
   <body>
-<%= render "shared/flashes" %>
+    <%= render "shared/flashes" %>
 
     <%= yield %>
- <%= javascript_include_tag "motivation", defer: true %>
+
+    <% if user_signed_in? && !devise_controller? && controller_name != "pages" && controller_name != "dashboard" %>
+      <%= render "shared/navbar_navigation" %>
+    <% end %>
+
+    <% if user_signed_in? && !devise_controller? && controller_name != "pages" %>
+      <div id="motivation-popup" class="motivation-popup">
+        <p class="popup-title">Quote of the day</p>
+        <span id="motivation-text"></span>
+      </div>
+    <% end %>
+
+    <%= javascript_include_tag "motivation", defer: true %>
 
   </body>
 </html>
