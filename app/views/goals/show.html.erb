@@ -100,8 +100,12 @@
     <p class="subtitle">Vous avez reçu un succès</p>
 
     <div class="trophy-card-popup">
-      <h3><%= @badge.title %></h3>
-    </div>
+  <% if @badge.present? %>
+    <h3><%= @badge.title %></h3>
+  <% else %>
+    <h3><%= @goal.name %></h3> <!-- fallback si aucun badge débloqué -->
+  <% end %>
+</div>
 
     <div class="popup-buttons">
       <button class="popup-close" data-action="trophy-popup#close">OK</button>
