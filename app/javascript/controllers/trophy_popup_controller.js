@@ -11,10 +11,14 @@ export default class extends Controller {
 
   open() {
     this.element.classList.add("is-visible")
-    // Confettis 
-  }
-
+   window.confetti({
+    particleCount: 120,
+    spread: 70,
+    origin: { y: 0.6 },
+    disableForReducedMotion: true
+  })
+}
   close() {
     this.element.classList.remove("is-visible")
   }
-}
+  }
