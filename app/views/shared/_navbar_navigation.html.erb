@@ -1,23 +1,28 @@
 <nav class="bottom-navbar">
 
-  <!-- Back -->
-  <div class="nav-left">
-    <%= link_to "javascript:history.back()" do %>
-      <%= image_tag "icon-back.svg", class: "nav-icon" %>
-    <% end %>
-  </div>
-
   <!-- Home -->
-  <div class="nav-center">
+  <div class="nav-left">
     <%= link_to dashboard_path do %>
       <%= image_tag "icon-home.svg", class: "nav-icon" %>
     <% end %>
   </div>
 
+  <!-- Motivation -->
+  <div class="nav-center" id="phrase-btn">
+    <%= image_tag "icon-motivation.png", class: "nav-add-icon" %>
+  </div>
+
   <!-- Profile -->
   <div class="nav-right">
-    <%= link_to profile_path do %>
-      <%= image_tag "icon-profile.svg", class: "nav-icon" %>
+    <%= link_to profile_path, class: "profile-link" do %>
+      <span class="nav-username"><%= current_user.name %></span>
+      <div class="profile-avatar">
+        <% if current_user.photo.attached? %>
+          <%= image_tag current_user.photo, class: "avatar-img" %>
+        <% else %>
+          <%= image_tag "icon-profile.svg", class: "avatar-img avatar-default" %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 

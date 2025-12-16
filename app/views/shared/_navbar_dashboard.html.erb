@@ -1,17 +1,24 @@
 <nav class="bottom-navbar">
-  <div class="nav-left" id="phrase-btn">
-    <%= image_tag "icon-info.svg", class: "nav-icon" %>
-  </div>
-
-  <div class="nav-center">
+  <div class="nav-left">
     <%= link_to categories_path do %>
-      <%= image_tag "icon-add-goal.svg", class: "nav-add-icon" %>
+      <%= image_tag "icon-add-goal.svg", class: "nav-icon" %>
     <% end %>
   </div>
 
+  <div class="nav-center" id="phrase-btn">
+    <%= image_tag "icon-motivation.png", class: "nav-add-icon" %>
+  </div>
+
   <div class="nav-right">
-    <%= link_to profile_path do %>
-      <%= image_tag "icon-profile.svg", class: "nav-icon" %>
+    <%= link_to profile_path, class: "profile-link" do %>
+      <span class="nav-username"><%= current_user.name %></span>
+      <div class="profile-avatar">
+        <% if current_user.photo.attached? %>
+          <%= image_tag current_user.photo, class: "avatar-img" %>
+        <% else %>
+          <%= image_tag "icon-profile.svg", class: "avatar-img avatar-default" %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </nav>
