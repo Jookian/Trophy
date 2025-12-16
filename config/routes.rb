@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: "pages#home"
+  get "auto_login", to: "pages#auto_login"
 
   get "dashboard", to: "dashboard#index"
 

@@ -10,3 +10,60 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+/* Top navbar (header) */
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 1000;
+}
+
+/* Espace pour le contenu sous le top-navbar */
+body.has-top-navbar {
+  padding-top: 70px;
+}
+
+.top-nav-left a {
+  display: flex;
+  align-items: center;
+}
+
+.top-nav-logo {
+  height: 40px;
+  width: auto;
+}
+
+.top-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 12px;
+  border-radius: 12px;
+  background: darken($primary, 8%);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.top-nav-trophy-icon {
+  height: 34px;
+  width: auto;
+  vertical-align: middle;
+  margin-top: 10px;
+}
+
+.top-nav-trophy-count {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 34px;
+  vertical-align: middle;
+}
