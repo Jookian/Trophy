@@ -8,21 +8,24 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-puts "Creating fake user..."
-User.destroy_all
-user = User.create!(
-  email: "Léo@gmail.com",
-  password: "leorok",
-  password_confirmation: "leorok"
-)
-puts "Fake user created:"
-puts "#{user.email} / leorok"
+puts "Creating or finding fake user..."
 
-puts "Cleaning database..."
-Badge.destroy_all
-Goal.destroy_all
-Category.destroy_all
-puts "Creating categories, goals and funky badges..."
+email = "leo@gmail.com"
+
+user = User.find_by(email: email)
+
+unless user
+  user = User.create!(
+    email: email,
+    password: "leorok",
+    password_confirmation: "leorok"
+  )
+end
+
+puts "Fake user ready: #{user.email} / leorok"
+
+puts "Adding new categories, goals and badges..."
+
 categories = {
   # ---------------------------------------------------------
   #                      VOYAGES
@@ -143,19 +146,94 @@ categories = {
       { title: "Prince/Princesse du dancefloor", description: "Participer à un cours de danse" },
       { title: "Dieu/Déesse de la danse", description: "Danser une chorégraphie devant des gens" }
     ]
+  },
+  # ---------------------------------------------------------
+  #                    Cuisine
+  # ---------------------------------------------------------
+  "Cuisine" => {
+    "Maîtriser la cuisine italienne" => [
+    { title: "Novice en pâtes", description: "Faire ses premières pâtes maison" },
+    { title: "Chef en herbe", description: "Préparer une pizza complète" },
+    { title: "Maestro du risotto", description: "Réaliser un risotto parfait" },
+    { title: "Virtuose italien", description: "Préparer un repas complet" },
+    { title: "Chef étoilé local", description: "Organiser un dîner italien" }
+    ],
+    "Découvrir la pâtisserie française" => [
+    { title: "Apprenti pâtissier", description: "Réaliser un gâteau simple" },
+    { title: "Boulanger du dimanche", description: "Faire un pain maison" },
+    { title: "Chocolatier amateur", description: "Préparer des truffes" },
+    { title: "Pâtissier confirmé", description: "Faire un entremet" },
+    { title: "Maître pâtissier", description: "Réaliser un dessert gastronomique" }
+    ],
+    "Apprendre la cuisine asiatique" => [
+    { title: "Sushi débutant", description: "Préparer un rouleau de sushi" },
+    { title: "Chef du wok", description: "Faire un plat sauté équilibré" },
+    { title: "Maestro du ramen", description: "Préparer un bol de ramen maison" },
+    { title: "Chef exotique", description: "Faire un plat asiatique complet" },
+    { title: "Virtuose culinaire", description: "Organiser un dîner asiatique" }
+    ],
+    "Maîtriser la cuisine végétarienne" => [
+    { title: "Veggie novice", description: "Préparer un plat végétarien simple" },
+    { title: "Explorateur veggie", description: "Créer un menu végétarien complet" },
+    { title: "Cuisinier sain", description: "Préparer 3 recettes équilibrées" },
+    { title: "Gourmet végétarien", description: "Organiser un dîner végétarien" },
+    { title: "Maître veggie", description: "Innover 5 nouvelles recettes végétariennes" }
+    ],
+    "Cuisiner avec un budget limité" => [
+    { title: "Économe débutant", description: "Préparer un repas pour moins de 5€" },
+    { title: "Astucieux cuisinier", description: "Faire 3 repas économiques" },
+    { title: "Chef malin", description: "Créer un menu complet à petit prix" },
+    { title: "Maître du budget", description: "Préparer 5 plats créatifs à petit coût" },
+    { title: "Gourmet malin", description: "Faire un dîner complet pour 2 à moins de 10€" }
+    ],
+    "Apprendre à cuisiner des desserts internationaux" => [
+    { title: "Dessert novice", description: "Faire un dessert simple" },
+    { title: "Explorateur sucré", description: "Préparer un dessert européen" },
+    { title: "Chef sucré", description: "Réaliser un dessert asiatique" },
+    { title: "Virtuose gourmand", description: "Préparer un dessert exotique" },
+    { title: "Maître pâtissier international", description: "Faire un dessert de 3 pays différents" }
+    ],
+    "Cuisiner pour des événements spéciaux" => [
+    { title: "Petit chef", description: "Préparer un plat pour un anniversaire" },
+    { title: "Cuisinier festif", description: "Faire un repas pour un dîner" },
+    { title: "Chef de fête", description: "Organiser un repas pour 5 personnes" },
+    { title: "Maestro de l'événement", description: "Créer un menu thématique" },
+    { title: "Virtuose culinaire", description: "Préparer un banquet pour 10 personnes" }
+    ],
+    "Maîtriser les sauces et condiments" => [
+    { title: "Saucier débutant", description: "Faire une sauce simple" },
+    { title: "Chef assaisonneur", description: "Préparer 3 sauces maison" },
+    { title: "Maestro du goût", description: "Réaliser un repas complet avec sauces" },
+    { title: "Expert en condiments", description: "Créer 5 sauces originales" },
+    { title: "Maître des saveurs", description: "Inventer un nouveau condiment" }
+    ],
+    "Cuisiner pour la santé" => [
+    { title: "Débutant équilibré", description: "Préparer un plat équilibré" },
+    { title: "Cuisinier santé", description: "Faire 3 repas sains" },
+    { title: "Chef nutritif", description: "Créer un menu pour une semaine" },
+    { title: "Maître bien-être", description: "Organiser un dîner santé complet" },
+    { title: "Virtuose de la nutrition", description: "Innover 5 recettes saines" }
+    ],
+    "Maîtriser la cuisine rapide" => [
+    { title: "Rapide débutant", description: "Faire un repas en 15 minutes" },
+    { title: "Chef express", description: "Préparer un repas en 30 minutes" },
+    { title: "Maestro du timing", description: "Faire 3 plats rapides" },
+    { title: "Virtuose rapide", description: "Créer un menu complet en 1h" },
+    { title: "Champion de la rapidité", description: "Organiser un dîner complet en moins d'1h30" }
+    ]
   }
 }
 
 categories.each do |category_name, goals|
-  category = Category.create!(name: category_name)
+  category = Category.find_or_create_by!(name: category_name)
+
   goals.each do |goal_name, badges|
-    goal = Goal.create!(name: goal_name, category: category)
+    goal = Goal.find_or_create_by!(name: goal_name, category: category)
+
     badges.each do |badge|
-      Badge.create!(
-        title: badge[:title],
-        description: badge[:description],
-        goal: goal
-      )
+      Badge.find_or_create_by!(title: badge[:title], goal: goal) do |b|
+        b.description = badge[:description]
+      end
     end
   end
 end
