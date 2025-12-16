@@ -102,6 +102,8 @@
   border: none;
 }
 
+  /* Pop up Trophy */
+
 .trophy-popup {
   position: fixed; 
   inset: 0;
@@ -179,4 +181,24 @@
 .trophy-card-popup h3 {
   font-size: 16px;
   margin-bottom: 4px;
+}
+
+  /* Pop up supprimer Trophy */
+
+ .confirm-popup {
+  position: fixed;
+  inset: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.confirm-popup.is-visible {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirm-popup-content {
+  background: white;
+  padding: 16px;
 }

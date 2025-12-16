@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get "/goals/:id", to: "goals#show", as: :goal
   post "/user_badges", to: "user_badges#create", as: :user_badges
+  delete "/user_badges/:id", to: "user_badges#destroy", as: :user_badge
+
   resources :user_goals, only: [:destroy]
 
   resource :profile, only: [:show, :edit, :update]
