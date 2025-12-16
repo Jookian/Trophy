@@ -1,3 +1,4 @@
+<div data-controller="confirm">
 <div class="goal-show-container">
   <h1><%= @goal.name %></h1>
 </div>
@@ -23,17 +24,37 @@
       </div>
 
       <div class="trophy-card-action">
-        <% if @validated_badges.include?(badge.id) %>
-          <span class="validated">✔</span>
-        <% else %>
-          <%= button_to user_badges_path(badge_id: badge.id),
-                method: :post,
-                class: "validate-btn" do %>
-            <%= image_tag "icon-trophy-small.svg", class: "validate-icon" %>
-          <% end %>
-        <% end %>
+  <% user_badge = current_user.user_badges.find_by(badge: badge) %>
+
+  <% if user_badge %>
+    <!-- Bouton annuler le trophy -->
+    <button
+      type="button"
+      class="validate-btn"
+      data-action="click->confirm#open"
+      data-confirm-form-id="delete-user-badge-<%= user_badge.id %>">
+      ↩️
+    </button>
+
+    <!-- Form caché pour la suppression -->
+    <%= form_with model: user_badge,
+          method: :delete,
+          html: {
+            id: "delete-user-badge-#{user_badge.id}",
+            style: "display:none;"
+          } do %>
+    <% end %>
+
+  <% else %>
+    <!-- Bouton valider le trophy -->
+    <%= button_to user_badges_path(badge_id: badge.id),
+          method: :post,
+          class: "validate-btn" do %>
+      <%= image_tag "icon-trophy-small.svg", class: "validate-icon" %>
+    <% end %>
+  <% end %>
+</div>
       </div>
-    </div>
   <% end %>
 </div>
 
@@ -75,7 +96,7 @@
   <%= image_tag "icon-trophy.png", alt: "Trophy", class: "trophy-icon-img" %>
 </div>
 
-    <h2> Félicitations Léo !</h2>
+    <h2> Félicitations <%= current_user.name %>  !</h2>
     <p class="subtitle">Vous avez reçu un succès</p>
 
     <div class="trophy-card-popup">
@@ -91,4 +112,15 @@
     </div>
   </div>
 
+</div>
+<div class="confirm-popup" data-confirm-target="popup">
+    <div class="confirm-popup-content">
+      <p>Êtes-vous sûr de vouloir annuler ce trophy ?</p>
+
+      <div class="confirm-buttons">
+        <button data-action="confirm#confirm">Oui</button>
+        <button data-action="confirm#close">Non</button>
+      </div>
+    </div>
+  </div>
 </div>

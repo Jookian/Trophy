@@ -10,5 +10,15 @@ class UserBadgesController < ApplicationController
 
     redirect_to goal_path(badge.goal), notice: "trophy_unlocked"
   end
+
+  def destroy
+    user_badge = current_user.user_badges.find(params[:id])
+    goal = user_badge.badge.goal
+
+    user_badge.destroy
+
+    redirect_to goal_path(goal), notice: "Trophy_locked"
+  end
+
 end
 

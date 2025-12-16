@@ -22,8 +22,6 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
 
     
- <%= javascript_include_tag "motivation", defer: true %>
-
     <% if user_signed_in? && !devise_controller? && controller_name != "pages" && controller_name != "dashboard" %>
       <%= render "shared/navbar_navigation" %>
     <% end %>
@@ -34,8 +32,6 @@
         <span id="motivation-text"></span>
       </div>
     <% end %>
-
-    <%= javascript_include_tag "motivation", defer: true %>
 
   </body>
 </html>
