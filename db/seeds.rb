@@ -221,6 +221,315 @@ categories = {
     { title: "Virtuose rapide", description: "Créer un menu complet en 1h" },
     { title: "Champion de la rapidité", description: "Organiser un dîner complet en moins d'1h30" }
     ]
+  },
+  # ---------------------------------------------------------
+  #                    Sommeil
+  # ---------------------------------------------------------
+  "Sommeil" => {
+    "Atteindre les rêves lucides" => [
+      { title: "Passeur de seuil", description: "Tenir un journal de rêves 3 jours" },
+      { title: "Ancre de réalité", description: "Faire des tests de réalité en journée" },
+      { title: "Mémoire onirique", description: "Se souvenir de 2 rêves distincts" },
+      { title: "Conscience émergente", description: "Réaliser que l’on rêve" },
+      { title: "Architecte du rêve", description: "Contrôler un élément du rêve" }
+    ],
+
+    "Améliorer la qualité du sommeil" => [
+      { title: "Rituel du crépuscule", description: "Créer une routine avant de dormir" },
+      { title: "Nuit sans écran", description: "Éviter les écrans avant le coucher" },
+      { title: "Dormeur profond", description: "Dormir sans réveil nocturne" },
+      { title: "Cycle maîtrisé", description: "Se réveiller reposé 3 jours d’affilée" },
+      { title: "Sommeil royal", description: "Atteindre un sommeil réparateur constant" }
+    ],
+
+    "S’endormir plus rapidement" => [
+      { title: "Esprit calme", description: "Tester une technique de relaxation" },
+      { title: "Respiration contrôlée", description: "Faire une respiration guidée" },
+      { title: "Endormissement express", description: "S’endormir en moins de 30 min" },
+      { title: "Horloge interne", description: "S’endormir à heure fixe 3 jours" },
+      { title: "Maître du lâcher-prise", description: "S’endormir rapidement sans effort" }
+    ],
+
+    "Créer une routine de coucher stable" => [
+      { title: "Première habitude", description: "Choisir une action répétée le soir" },
+      { title: "Répétition nocturne", description: "Suivre la routine 3 soirs" },
+      { title: "Discipline douce", description: "Tenir la routine 7 jours" },
+      { title: "Automatisme", description: "Routine sans y penser" },
+      { title: "Gardien du sommeil", description: "Routine ancrée sur le long terme" }
+    ],
+
+    "Se réveiller en forme" => [
+      { title: "Réveil sans violence", description: "Se lever sans snooze" },
+      { title: "Matin clair", description: "Se lever reposé une fois" },
+      { title: "Stabilité matinale", description: "Se lever à heure fixe 3 jours" },
+      { title: "Énergie matinale", description: "Commencer la journée motivé" },
+      { title: "Réveil de légende", description: "Matins énergiques toute la semaine" }
+    ],
+
+    "Réduire les réveils nocturnes" => [
+      { title: "Observation nocturne", description: "Identifier la cause des réveils" },
+      { title: "Nuit plus stable", description: "Réduire les réveils une nuit" },
+      { title: "Sommeil continu", description: "Dormir avec peu d’interruptions" },
+      { title: "Nuit fluide", description: "Dormir sans réveil notable" },
+      { title: "Silence intérieur", description: "Sommeil profond constant" }
+    ],
+
+    "Optimiser son environnement de sommeil" => [
+      { title: "Chambre rangée", description: "Rendre la chambre propice au sommeil" },
+      { title: "Obscurité totale", description: "Dormir dans le noir complet" },
+      { title: "Silence nocturne", description: "Limiter les bruits parasites" },
+      { title: "Température idéale", description: "Optimiser la température" },
+      { title: "Sanctuaire du sommeil", description: "Créer un environnement parfait" }
+    ],
+
+    "Dormir sans stress" => [
+      { title: "Décharge mentale", description: "Noter ses pensées avant dormir" },
+      { title: "Esprit apaisé", description: "Se coucher sans anxiété" },
+      { title: "Nuit légère", description: "Dormir sans rumination" },
+      { title: "Lâcher total", description: "S’endormir sereinement" },
+      { title: "Paix nocturne", description: "Dormir profondément sans stress" }
+    ],
+
+    "Allonger la durée de sommeil" => [
+      { title: "Coucher avancé", description: "Se coucher plus tôt une fois" },
+      { title: "Nuit complète", description: "Dormir 7h une nuit" },
+      { title: "Rythme étendu", description: "Dormir 7h sur 3 jours" },
+      { title: "Sommeil durable", description: "Dormir suffisamment toute la semaine" },
+      { title: "Repos absolu", description: "Durée idéale maintenue" }
+    ],
+
+    "Maîtriser son rythme circadien" => [
+      { title: "Horloge consciente", description: "Observer ses heures naturelles" },
+      { title: "Stabilité nocturne", description: "Heures régulières 3 jours" },
+      { title: "Synchronisation", description: "Rythme stable une semaine" },
+      { title: "Corps aligné", description: "Sommeil et réveil naturels" },
+      { title: "Maître du temps", description: "Rythme circadien parfaitement aligné" }
+    ]
+  },
+  # ---------------------------------------------------------
+  #                    Divertissement
+  # ---------------------------------------------------------
+  "Divertissement" => {
+    "Regarder 10 films cultes" => [
+      { title: "Cinéphile débutant", description: "Regarder ton premier film culte" },
+      { title: "Spectateur aguerri", description: "En regarder 3 de plus" },
+      { title: "Marathonien du cinéma", description: "Voir 5 films cultes" },
+      { title: "Critique éclairé", description: "Voir 8 films cultes" },
+      { title: "Maître du grand écran", description: "Voir les 10 films" }
+    ],
+    "Terminer 5 jeux vidéo" => [
+      { title: "Joueur novice", description: "Finir ton premier jeu" },
+      { title: "Gamer appliqué", description: "En finir un deuxième" },
+      { title: "Challengeur", description: "Terminer 3 jeux" },
+      { title: "Pro du joystick", description: "Finir 4 jeux" },
+      { title: "Légende du gaming", description: "Terminer les 5" }
+    ],
+    "Lire 5 livres différents" => [
+      { title: "Lecteur débutant", description: "Finir un livre" },
+      { title: "Amateur éclairé", description: "Lire un deuxième livre" },
+      { title: "Curieux insatiable", description: "Lire 3 livres" },
+      { title: "Bibliophile", description: "Lire 4 livres" },
+      { title: "Erudit", description: "Lire 5 livres" }
+    ],
+    "Regarder 10 séries" => [
+      { title: "Sériephile débutant", description: "Regarder ta première série" },
+      { title: "Fan assidu", description: "Regarder 3 séries" },
+      { title: "Addict confirmé", description: "Voir 5 séries" },
+      { title: "Marathonien du canapé", description: "Regarder 8 séries" },
+      { title: "Sériphile ultime", description: "Voir les 10 séries" }
+    ],
+    "Résoudre un Rubik’s Cube" => [
+      { title: "Novice du cube", description: "Résoudre une face" },
+      { title: "Apprenti cuber", description: "Résoudre deux faces" },
+      { title: "Cubiste confirmé", description: "Résoudre trois faces" },
+      { title: "Maître du cube", description: "Résoudre la moitié du cube" },
+      { title: "Grand maître du Rubik’s Cube", description: "Résoudre complètement le cube" }
+    ],
+    "Découvrir des animes" => [
+      { title: "Otaku en herbe", description: "Découvrir ton premier anime" },
+      { title: "Curieux animé", description: "Regarder 2 animes" },
+      { title: "Explorateur animé", description: "Regarder 3 animes" },
+      { title: "Fan éclairé", description: "Regarder 4 animes" },
+      { title: "Maître otaku", description: "Regarder 5 animes" }
+    ],
+    "Créer ton top 10 films" => [
+      { title: "Critique amateur", description: "Lister tes 3 films préférés" },
+      { title: "Sélecteur averti", description: "Compléter 5 films" },
+      { title: "Curateur", description: "Atteindre 7 films" },
+      { title: "Expert cinéphile", description: "Lister 9 films" },
+      { title: "Maître du top 10", description: "Compléter le top 10" }
+    ],
+    "Créer ton top 10 jeux vidéo" => [
+      { title: "Gamer débutant", description: "Lister tes 3 jeux préférés" },
+      { title: "Fan sélectif", description: "Atteindre 5 jeux" },
+      { title: "Collectionneur", description: "Lister 7 jeux" },
+      { title: "Pro gamer", description: "Atteindre 9 jeux" },
+      { title: "Maître du top 10", description: "Compléter le top 10" }
+    ],
+    "Créer ton top 10 livres" => [
+      { title: "Lecteur débutant", description: "Lister 3 livres" },
+      { title: "Lecteur passionné", description: "Atteindre 5 livres" },
+      { title: "Bibliophile averti", description: "Lister 7 livres" },
+      { title: "Erudit", description: "Lister 9 livres" },
+      { title: "Maître des pages", description: "Compléter le top 10" }
+    ],
+    "Tester 5 activités fun inédites" => [
+      { title: "Découvreur", description: "Essayer une nouvelle activité" },
+      { title: "Aventurier", description: "Tester 2 activités" },
+      { title: "Explorateur", description: "Tester 3 activités" },
+      { title: "Fun addict", description: "Tester 4 activités" },
+      { title: "Maître du divertissement", description: "Tester les 5 activités" }
+    ]
+  },
+  # ---------------------------------------------------------
+  #                    Divertissement
+  # ---------------------------------------------------------
+  "Créatif" => {
+    "Peindre un tableau" => [
+      { title: "Pinceau débutant", description: "Faire ton premier dessin au crayon" },
+      { title: "Artiste en herbe", description: "Peindre une petite toile" },
+      { title: "Peintre confirmé", description: "Terminer une toile de taille moyenne" },
+      { title: "Maestro des couleurs", description: "Peindre une grande toile complexe" },
+      { title: "Grand maître peintre", description: "Créer une œuvre digne d’exposition" }
+    ],
+    "Réaliser un dessin quotidien" => [
+      { title: "Gribouilleur", description: "Faire un petit dessin" },
+      { title: "Dessinateur motivé", description: "Faire 3 dessins en une semaine" },
+      { title: "Artiste appliqué", description: "Faire 5 dessins en une semaine" },
+      { title: "Illustrateur régulier", description: "Faire 7 dessins" },
+      { title: "Maître du carnet", description: "Maintenir 30 jours de dessins consécutifs" }
+    ],
+    "Sculpter une création" => [
+      { title: "Sculpteur novice", description: "Réaliser une petite sculpture en pâte à modeler" },
+      { title: "Sculpteur appliqué", description: "Faire une sculpture en argile" },
+      { title: "Sculpteur confirmé", description: "Créer une sculpture complexe" },
+      { title: "Maestro de la matière", description: "Terminer une sculpture détaillée" },
+      { title: "Grand sculpteur", description: "Créer une œuvre exposable" }
+    ],
+    "Participer à un challenge artistique" => [
+      { title: "Débutant créatif", description: "Participer à ton premier challenge" },
+      { title: "Challenger régulier", description: "Participer à 3 challenges" },
+      { title: "Expert créatif", description: "Participer à 5 challenges" },
+      { title: "Maestro des défis", description: "Participer à 7 challenges" },
+      { title: "Champion artistique", description: "Participer à 10 challenges" }
+    ],
+    "Expérimenter 3 techniques artistiques différentes" => [
+      { title: "Curieux artistique", description: "Essayer une nouvelle technique" },
+      { title: "Explorateur des médiums", description: "Essayer 2 techniques" },
+      { title: "Polytechnique créatif", description: "Essayer 3 techniques" },
+      { title: "Maître des techniques", description: "Maîtriser 3 techniques" },
+      { title: "Virtuose des arts", description: "Maîtriser 5 techniques différentes" }
+    ],
+    "Créer un objet DIY" => [
+      { title: "Brico débutant", description: "Réaliser un objet simple" },
+      { title: "Bricoleur motivé", description: "Faire 2 objets DIY" },
+      { title: "Créateur habile", description: "Réaliser un objet original" },
+      { title: "Artisan confirmé", description: "Créer un objet complexe" },
+      { title: "Maître bricoleur", description: "Réaliser une série d’objets originaux" }
+    ],
+    "Coudre un accessoire" => [
+      { title: "Fil débutant", description: "Coudre un petit accessoire" },
+      { title: "Apprenti couturier", description: "Faire un objet textile simple" },
+      { title: "Couturier appliqué", description: "Créer un accessoire complexe" },
+      { title: "Maestro du fil", description: "Réaliser une pièce unique" },
+      { title: "Grand couturier", description: "Créer une collection complète" }
+    ],
+    "Fabriquer un bijou" => [
+      { title: "Bijoutier novice", description: "Créer un simple bracelet" },
+      { title: "Bijoutier créatif", description: "Réaliser un collier simple" },
+      { title: "Artisan bijoutier", description: "Créer un ensemble de bijoux" },
+      { title: "Maestro des gemmes", description: "Fabriquer un bijou complexe" },
+      { title: "Grand bijoutier", description: "Créer une collection complète de bijoux" }
+    ],
+    "Décorer une pièce" => [
+      { title: "Déco débutant", description: "Ranger et décorer un coin de ta chambre" },
+      { title: "Décorateur motivé", description: "Réaménager une pièce" },
+      { title: "Artiste décorateur", description: "Créer une décoration originale" },
+      { title: "Maestro de la déco", description: "Refaire une pièce entière avec style" },
+      { title: "Grand décorateur", description: "Créer un espace digne d’un magazine" }
+    ],
+    "Photographier et retoucher" => [
+      { title: "Apprenti photographe", description: "Prendre une photo correcte" },
+      { title: "Photographe amateur", description: "Faire 5 belles photos" },
+      { title: "Photographe créatif", description: "Réaliser un petit projet photo" },
+      { title: "Maestro de la lumière", description: "Créer une série photographique originale" },
+      { title: "Photographe pro", description: "Produire une galerie complète et cohérente" }
+    ]
+  },
+  # ---------------------------------------------------------
+  #                    Santé
+  # ---------------------------------------------------------
+  "Santé" => {
+    "Boire 2 litres d'eau par jour" => [
+      { title: "Gouttelette", description: "Boire 0,5 litre d'eau" },
+      { title: "Hydraté", description: "Boire 1 litre d'eau" },
+      { title: "Héros hydraté", description: "Boire 1,5 litre d'eau" },
+      { title: "Maître de l'eau", description: "Boire 2 litres d'eau une journée" },
+      { title: "Hydromancien", description: "Boire 2 litres d'eau pendant une semaine" }
+    ],
+    "Manger équilibré pendant une semaine" => [
+      { title: "Débutant veggie", description: "Ajouter 1 fruit ou légume par jour" },
+      { title: "Assidu", description: "Manger équilibré 3 jours de suite" },
+      { title: "Rigoureux", description: "Manger équilibré 5 jours de suite" },
+      { title: "Maître nutrition", description: "Manger équilibré 7 jours de suite" },
+      { title: "Gourmet expert", description: "Maintenir une alimentation équilibrée pendant 2 semaines" }
+    ],
+    "Dormir 7-8 heures par nuit" => [
+      { title: "Sommeil ponctuel", description: "Dormir 6 heures une nuit" },
+      { title: "Dormeur régulier", description: "Dormir 7 heures deux nuits de suite" },
+      { title: "Maître du repos", description: "Dormir 7-8 heures pendant 3 nuits" },
+      { title: "Expert du sommeil", description: "Maintenir 7-8 heures pendant 1 semaine" },
+      { title: "Sommeil parfait", description: "Maintenir 7-8 heures pendant 1 mois" }
+    ],
+    "Marcher 10 000 pas par jour" => [
+      { title: "Pas motivé", description: "Faire 2 000 pas" },
+      { title: "Promeneur", description: "Faire 5 000 pas" },
+      { title: "Marcheur actif", description: "Faire 7 500 pas" },
+      { title: "Marcheur confirmé", description: "Faire 10 000 pas" },
+      { title: "Roi/Roi des pas", description: "Maintenir 10 000 pas pendant une semaine" }
+    ],
+    "Faire du sport 3 fois par semaine" => [
+      { title: "Sportif du dimanche", description: "Faire une séance" },
+      { title: "Motivé", description: "Faire deux séances" },
+      { title: "Assidu", description: "Faire trois séances" },
+      { title: "Maître du rythme", description: "Faire trois séances pendant deux semaines" },
+      { title: "Athlète confirmé", description: "Faire trois séances pendant un mois" }
+    ],
+    "Réduire le sucre" => [
+      { title: "Petit sucre", description: "Éviter les boissons sucrées une journée" },
+      { title: "Maîtrise douce", description: "Éviter sucre ajouté 3 jours" },
+      { title: "Expert en sucre", description: "Éviter sucre ajouté 1 semaine" },
+      { title: "Virtuose du sucre", description: "Réduire sucre ajouté pendant 2 semaines" },
+      { title: "Maître du sucre", description: "Maintenir une alimentation faible en sucre pendant 1 mois" }
+    ],
+    "Méditer ou respirer 5 min par jour" => [
+      { title: "Débutant zen", description: "Faire 1 séance de 2 min" },
+      { title: "Relaxé", description: "Faire 3 séances de 5 min" },
+      { title: "Concentré", description: "Faire 5 séances de 5 min" },
+      { title: "Maître zen", description: "Faire 10 séances" },
+      { title: "Sage", description: "Maintenir la pratique quotidienne pendant 1 mois" }
+    ],
+    "Limiter écran avant le coucher" => [
+      { title: "Débutant digital", description: "Éteindre l'écran 15 min avant de dormir" },
+      { title: "Assidu", description: "Éteindre 30 min avant le coucher" },
+      { title: "Régulier", description: "Éteindre 1 h avant le coucher" },
+      { title: "Expert nocturne", description: "Éteindre 1 h avant le coucher pendant 1 semaine" },
+      { title: "Maître de la nuit", description: "Éteindre 1 h avant le coucher pendant 1 mois" }
+    ],
+    "Faire un check-up santé" => [
+      { title: "Débutant prévoyant", description: "Prendre rendez-vous pour un check-up" },
+      { title: "Assidu", description: "Passer un check-up de base" },
+      { title: "Rigoureux", description: "Compléter les tests recommandés" },
+      { title: "Maître santé", description: "Analyser les résultats et agir" },
+      { title: "Santé parfaite", description: "Suivre toutes les recommandations et vérifier les progrès" }
+    ],
+    "Réduire stress et anxiété" => [
+      { title: "Débutant zen", description: "Prendre 5 min pour respirer" },
+      { title: "Calme", description: "Faire 10 min de relaxation" },
+      { title: "Sérénité", description: "Faire 15 min de méditation ou activité relaxante" },
+      { title: "Maître du calme", description: "Intégrer une routine anti-stress quotidienne" },
+      { title: "Zen ultime", description: "Maintenir une vie équilibrée et gérer le stress efficacement" }
+    ]
   }
 }
 
