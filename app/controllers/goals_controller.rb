@@ -1,10 +1,16 @@
 class GoalsController < ApplicationController
    before_action :authenticate_user!
   def show
-    @goal = Goal.find(params[:id])
-    @badges = @goal.badges
-    @validated_badges = current_user.user_badges.pluck(:badge_id)
-  end
+  @goal = Goal.find(params[:id])
+  @badges = @goal.badges
+  @validated_badges = current_user.user_badges.pluck(:badge_id)
+
+  # Récupère le dernier badge débloqué par l'utilisateur pour ce goal
+  @badge = current_user.user_badges
+                       .where(badge_id: @badges.pluck(:id))
+                       .order(created_at: :desc)
+                       .first&.badge
+end
 
   def add_photos
   @goal = current_user.goals.find(params[:id])
