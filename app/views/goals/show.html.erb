@@ -70,8 +70,17 @@
      data-trophy-popup-show-value="<%= flash[:notice] == 'trophy_unlocked' %>">
 
   <div class="trophy-popup-content">
-    <h2>🎉 Félicitations Léo !</h2>
-    <p>Vous avez débloqué un nouveau trophy.</p>
+
+    <div class="trophy-icon">
+  <%= image_tag "icon-trophy.png", alt: "Trophy", class: "trophy-icon-img" %>
+</div>
+
+    <h2> Félicitations Léo !</h2>
+    <p class="subtitle">Vous avez reçu un succès</p>
+
+    <div class="trophy-card-popup">
+      <h3><%= @goal.name %></h3>
+    </div>
 
     <div class="popup-buttons">
       <button class="popup-close" data-action="trophy-popup#close">OK</button>

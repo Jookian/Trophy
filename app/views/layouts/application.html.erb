@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html>
-  <script type="module">
-  import confetti from "https://cdn.skypack.dev/canvas-confetti";
-  window.confetti = confetti;
-</script>
 
   <head>
     <title>Trophy</title>
@@ -19,6 +15,9 @@
 <%= render "shared/flashes" %>
 
     <%= yield %>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+
+    
  <%= javascript_include_tag "motivation", defer: true %>
 
   </body>

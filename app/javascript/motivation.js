@@ -57,13 +57,14 @@ const phrases = [
 "Crois en ton potentiel",
 "Tu es sur la bonne voie",
 ];
+document.addEventListener("turbo:load", () => {
+  const button = document.getElementById("phrase-btn");
+  const popup = document.getElementById("motivation-popup");
+  const text = document.getElementById("motivation-text");
 
-const button = document.getElementById("phrase-btn");
-const popup = document.getElementById("motivation-popup");
-const text = document.getElementById("motivation-text");
+  if (!button || !popup || !text) return;
 
-if (button) {
-button.addEventListener("click", function(){
+  button.addEventListener("click", () => {
     const randomIndex = Math.floor(Math.random() * phrases.length);
     text.textContent = phrases[randomIndex];
 
@@ -73,4 +74,4 @@ button.addEventListener("click", function(){
       popup.classList.remove("show");
     }, 5000);
   });
-}
+});
