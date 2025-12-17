@@ -78,10 +78,27 @@
     </div>
   </div>
 
+  <!-- RÉCAP' DE VOTRE AVANCÉE - Badges des objectifs complétés -->
+  <% if @completed_goals.any? %>
+    <div class="card mb-3 mx-auto completed-goals-card" style="max-width: 420px;">
+      <div class="card-body text-center">
+        <h5 class="card-title mb-3">Récap' de votre avancée</h5>
+
+        <div class="completed-goals-badges">
+          <% @completed_goals.each do |goal| %>
+            <div class="completed-goal-badge" title="<%= goal.name %>">
+              <%= image_tag goal.icon_path, class: "completed-goal-icon" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
   <!-- COMPTEUR DE TROPHÉES -->
   <div class="card text-center mb-3 mx-auto" style="max-width: 420px;">
     <div class="card-body">
-      <h5 class="card-title">🏆 Trophées remportés</h5>
+      <h5 class="card-title">Trophées remportés</h5>
       <p class="display-6 fw-bold mb-0">
         <%= @trophies_count %>
       </p>

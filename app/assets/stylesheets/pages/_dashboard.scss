@@ -203,3 +203,24 @@
     box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.3);
   }
 }
+
+/* Icône de l'objectif en bas à gauche */
+.goal-icon-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  width: 33px;
+  height: 33px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.goal-icon-svg {
+  width: 23px;
+  height: 23px;
+  opacity: 0.8;
+}

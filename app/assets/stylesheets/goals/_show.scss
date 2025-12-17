@@ -202,3 +202,36 @@
   background: white;
   padding: 16px;
 }
+
+/* Section des trophées cachés */
+.hidden-trophies-section {
+  margin-top: 30px;
+  padding: 20px 16px;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  border-radius: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.hidden-trophies-section h2 {
+  color: white;
+  font-size: 20px;
+  margin: 0 0 8px 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.hidden-trophies-subtitle {
+  color: white;
+  font-size: 14px;
+  opacity: 0.9;
+  margin: 0 0 16px 0;
+}
+
+.trophy-card-hidden {
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+}
+
+.hidden-trophies .trophy-card {
+  margin: 12px 0;
+}
