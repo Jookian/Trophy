@@ -1,8 +1,14 @@
 <div data-controller="confirm">
-<div class="goal-show-container">
+
+<!-- Header -->
+
+<div class="goal-show-header">
+  <%= link_to dashboard_path, class: "back-link" do %>
+    <%= image_tag "icon-back.svg", alt: "Retour" %>
+  <% end %>
+
   <h1><%= @goal.name %></h1>
 </div>
-<%= link_to "⬅️ Retour au dashboard", dashboard_path, class: "btn btn-secondary mt-3" %>
 
 <!-- Progression -->
 <div class="progress-container">
