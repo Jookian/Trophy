@@ -1,10 +1,17 @@
 <div data-controller="confirm">
-<div class="goal-show-container">
+
+<!-- Header -->
+
+<div class="goal-show-header">
+  <%= link_to dashboard_path, class: "back-link" do %>
+    <%= image_tag "icon-back.svg", alt: "Retour" %>
+  <% end %>
+
   <h1><%= @goal.name %></h1>
 </div>
-<%= link_to "⬅️ Retour au dashboard", dashboard_path, class: "btn btn-secondary mt-3" %>
 
 <!-- Progression (basée uniquement sur les trophées classiques) -->
+<div class="progress-wrapper">
 <div class="progress-container">
   <% total = @badges.count %>
   <% done = @validated_badges.count { |id| @badges.pluck(:id).include?(id) } %>
@@ -13,7 +20,9 @@
   <div class="progress-bar" style="width: <%= percent %>%"></div>
   <div class="progress-text"><%= percent %>%</div>
 </div>
+</div>
 
+<div class="trophy-list-wrapper">
 <div class="trophy-list">
   <% @badges.each do |badge| %>
     <div class="trophy-card">
@@ -57,16 +66,21 @@
       </div>
   <% end %>
 </div>
+</div>
 
 <!-- Trophées cachés (visibles uniquement si objectif complété à 100%) -->
 <% if @goal_completed && @hidden_badges.any? %>
   <div class="hidden-trophies-section">
-    <h2>🎉 Objectif complété ! Trophées bonus débloqués</h2>
-    <p class="hidden-trophies-subtitle">Ces trophées fun ne comptent pas dans ta progression</p>
-
+  <h2>🎉 Bravo ! Ton objectif est complété à 100%</h2>
+  <h3>Nouveauté débloquée : les trophées BONUS</h3>
+  <p class="hidden-trophies-subtitle">
+    Ils ne comptent pas dans ta progression globale : c’est que du bonus, juste pour le fun
+  </p>
+</div>
+    <div class="trophy-list-wrapper">
     <div class="trophy-list hidden-trophies">
       <% @hidden_badges.each do |badge| %>
-        <div class="trophy-card trophy-card-hidden">
+        <div class="trophy-card">
           <div class="trophy-card-text">
             <h3><%= badge.title %></h3>
             <p><%= badge.description %></p>
@@ -102,6 +116,8 @@
       <% end %>
     </div>
   </div>
+  </div>
+
 <% end %>
 
 <h3>Photos inspirantes</h3>
