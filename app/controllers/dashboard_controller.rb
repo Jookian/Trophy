@@ -8,9 +8,10 @@ class DashboardController < ApplicationController
 
     @goal_progress = @user_goals.map do |user_goal|
       goal = user_goal.goal
-      total_badges = goal.badges.count
-      validated_badges = current_user.user_badges.where(badge: goal.badges).count
-       progress =
+      # Seuls les trophées classiques (non cachés) comptent pour la progression
+      total_badges = goal.badges.visible.count
+      validated_badges = current_user.user_badges.where(badge: goal.badges.visible).count
+      progress =
         if total_badges == 0
           0
         else
@@ -20,7 +21,8 @@ class DashboardController < ApplicationController
       {
         user_goal: user_goal,
         goal: user_goal.goal,
-        progress: progress
+        progress: progress,
+        completed: goal.completed_by?(current_user)
       }
     end
   end
