@@ -13,7 +13,7 @@
       </div>
     <% end %>
 
-    <button class="btn btn-outline-primary btn-sm"
+    <button class="btn-profile"
             onclick="toggleForm('photo-form')">
       Changer la photo
     </button>
@@ -36,7 +36,7 @@
         <%= @user.name.presence || "Non renseigné" %>
       </p>
 
-      <button class="btn btn-link p-0"
+      <button class="btn-profile"
               onclick="toggleForm('name-form')">
         Modifier mon pseudo
       </button>
@@ -61,7 +61,7 @@
         <%= @user.motivation_text.presence || "Non renseignée" %>
       </p>
 
-      <button class="btn btn-link p-0"
+      <button class="btn-profile"
               onclick="toggleForm('motivation-form')">
         Modifier ma phrase
       </button>
