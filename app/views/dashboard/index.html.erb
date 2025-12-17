@@ -30,7 +30,7 @@
             <%= link_to user_goal_path(item[:goal].user_goals.find_by(user: current_user)),
                 data: { turbo_method: :delete, turbo_confirm: "Supprimer ce goal ?" },
                 class: "delete-goal-link" do %>
-              🗑️
+              ✖️​
             <% end %>
           <% end %>
         </div>
