@@ -15,22 +15,21 @@ class GoalsController < ApplicationController
   end
 
   def add_photos
-  @goal = current_user.goals.find(params[:id])
+    @goal = current_user.goals.find(params[:id])
 
-  if params[:photos].present?
-    params[:photos].each do |photo|
-      begin
-        # On force l'attach, même formats inconnus
-        @goal.photos.attach(photo)
-      rescue => e
-        Rails.logger.warn("Impossible d'attacher #{photo.original_filename}: #{e.message}")
-        next
+    if params[:photos].present?
+      params[:photos].each do |photo|
+        begin
+          @goal.photos.attach(photo)
+        rescue => e
+          Rails.logger.warn("Impossible d'attacher #{photo.original_filename}: #{e.message}")
+          next
+        end
       end
     end
-  end
 
-  redirect_to goal_path(@goal)
-end
+    redirect_to goal_path(@goal)
+  end
 
   def gallery
     @goal = current_user.goals.find(params[:id])
@@ -38,8 +37,8 @@ end
 
   def destroy_photo
     @goal = current_user.goals.find(params[:id])
-    photo = @goal.photos.find(params[:photo_id])
-    photo.purge
+    photo = @goal.photos.find_by(blob_id: params[:photo_id])
+    photo&.purge
     redirect_to "/goals/#{@goal.id}/gallery"
   end
 end

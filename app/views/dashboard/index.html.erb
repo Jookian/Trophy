@@ -44,7 +44,7 @@
 <% if @show_welcome_popup %>
   <div class="welcome-overlay" id="welcome-overlay">
     <div class="welcome-card">
-      <p class="welcome-text"><%= current_user.motivation_text %></p>
+      <p class="welcome-text"><%= current_user.motivation_text.presence || "Bienvenue sur Trophy !" %></p>
       <button class="welcome-btn" onclick="document.getElementById('welcome-overlay').style.display='none'">OK</button>
     </div>
   </div>

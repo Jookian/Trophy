@@ -6,9 +6,10 @@ class UserGoalsController < ApplicationController
       goal_ids.each do |goal_id|
         current_user.user_goals.find_or_create_by(goal_id: goal_id)
       end
+      redirect_to goal_path(goal_ids.first), notice: "Objectifs ajoutés."
+    else
+      redirect_to dashboard_path, alert: "Aucun objectif sélectionné."
     end
-
-    redirect_to goal_path(goal_ids.first), notice: "Objectifs ajoutés."
   end
 
   def destroy

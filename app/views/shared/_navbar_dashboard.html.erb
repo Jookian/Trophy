@@ -11,7 +11,7 @@
 
   <div class="nav-right">
     <%= link_to profile_path, class: "profile-link" do %>
-      <span class="nav-username"><%= current_user.name %></span>
+      <span class="nav-username"><%= current_user.name.presence || current_user.email.split("@").first %></span>
       <div class="profile-avatar">
         <% if current_user.photo.attached? %>
           <%= image_tag current_user.photo, class: "avatar-img" %>

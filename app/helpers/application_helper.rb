@@ -6,6 +6,6 @@ module ApplicationHelper
 
   def current_user_trophies_total
     return 0 unless current_user
-    current_user.goals.joins(:badges).count
+    Badge.joins(goal: :user_goals).where(user_goals: { user_id: current_user.id }).visible.count
   end
 end
