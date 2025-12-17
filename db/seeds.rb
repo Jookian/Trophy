@@ -547,3 +547,6 @@ categories.each do |category_name, goals|
   end
 end
 puts "Seeds completed!"
+
+# Charger les trophées cachés
+load Rails.root.join('db/seeds/hidden_badges.rb')
