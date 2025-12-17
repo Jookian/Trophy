@@ -18,7 +18,8 @@
       <%= render "shared/top_navbar" %>
     <% end %>
 
-    <%= render "shared/flashes" %>
+    <%= render "shared/flashes" unless controller_name == "goals" %>
+
 
     <%= yield %>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
