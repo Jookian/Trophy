@@ -71,53 +71,52 @@
 <!-- Trophées cachés (visibles uniquement si objectif complété à 100%) -->
 <% if @goal_completed && @hidden_badges.any? %>
   <div class="hidden-trophies-section">
-  <h2>🎉 Bravo ! Ton objectif est complété à 100%</h2>
-  <h3>Nouveauté débloquée : les trophées BONUS</h3>
-  <p class="hidden-trophies-subtitle">
-    Ils ne comptent pas dans ta progression globale : c’est que du bonus, juste pour le fun
-  </p>
-</div>
+    <h2>🎉 Bravo ! Ton objectif est complété à 100%</h2>
+    <h3>Nouveauté débloquée : les trophées BONUS</h3>
+    <p class="hidden-trophies-subtitle">
+      Ils ne comptent pas dans ta progression globale : c'est que du bonus, juste pour le fun
+    </p>
+
     <div class="trophy-list-wrapper">
-    <div class="trophy-list hidden-trophies">
-      <% @hidden_badges.each do |badge| %>
-        <div class="trophy-card">
-          <div class="trophy-card-text">
-            <h3><%= badge.title %></h3>
-            <p><%= badge.description %></p>
-          </div>
+      <div class="trophy-list hidden-trophies">
+        <% @hidden_badges.each do |badge| %>
+          <div class="trophy-card">
+            <div class="trophy-card-text">
+              <h3><%= badge.title %></h3>
+              <p><%= badge.description %></p>
+            </div>
 
-          <div class="trophy-card-action">
-            <% user_badge = current_user.user_badges.find_by(badge: badge) %>
+            <div class="trophy-card-action">
+              <% user_badge = current_user.user_badges.find_by(badge: badge) %>
 
-            <% if user_badge %>
-              <button
-                type="button"
-                class="validate-btn"
-                data-action="click->confirm#open"
-                data-confirm-form-id="delete-user-badge-<%= user_badge.id %>">
-                ↩️
-              </button>
-              <%= form_with model: user_badge,
-                    method: :delete,
-                    html: {
-                      id: "delete-user-badge-#{user_badge.id}",
-                      style: "display:none;"
-                    } do %>
+              <% if user_badge %>
+                <button
+                  type="button"
+                  class="validate-btn"
+                  data-action="click->confirm#open"
+                  data-confirm-form-id="delete-user-badge-<%= user_badge.id %>">
+                  ↩️
+                </button>
+                <%= form_with model: user_badge,
+                      method: :delete,
+                      html: {
+                        id: "delete-user-badge-#{user_badge.id}",
+                        style: "display:none;"
+                      } do %>
+                <% end %>
+              <% else %>
+                <%= button_to user_badges_path(badge_id: badge.id),
+                      method: :post,
+                      class: "validate-btn" do %>
+                  <%= image_tag "icon-trophy-small.svg", class: "validate-icon" %>
+                <% end %>
               <% end %>
-            <% else %>
-              <%= button_to user_badges_path(badge_id: badge.id),
-                    method: :post,
-                    class: "validate-btn" do %>
-                <%= image_tag "icon-trophy-small.svg", class: "validate-icon" %>
-              <% end %>
-            <% end %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-  </div>
-
 <% end %>
 
 <h3>Photos inspirantes</h3>
@@ -158,7 +157,7 @@
   <%= image_tag "icon-trophy.png", alt: "Trophy", class: "trophy-icon-img" %>
 </div>
 
-    <h2> Félicitations <%= current_user.name %>  !</h2>
+    <h2> Félicitations <%= current_user.name.presence || "Champion" %>  !</h2>
     <p class="subtitle">Vous avez reçu un succès</p>
 
     <div class="trophy-card-popup">

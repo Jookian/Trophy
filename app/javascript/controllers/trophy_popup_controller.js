@@ -21,7 +21,7 @@ export default class extends Controller {
   close() {
     this.element.classList.remove("is-visible")
     // Révéler les trophées cachés après avoir fermé la popup
-    const hiddenTrophies = document.getElementById("hidden-trophies")
+    const hiddenTrophies = document.querySelector(".hidden-trophies")
     if (hiddenTrophies) {
       hiddenTrophies.style.display = "block"
     }

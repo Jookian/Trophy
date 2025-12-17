@@ -10,9 +10,9 @@
       <%= image_tag photo, width: 300 %>
 
       <%= button_to "Supprimer",
-        "/goals/#{@goal.id}/photos/#{photo.id}",
+        "/goals/#{@goal.id}/photos/#{photo.blob.id}",
         method: :delete,
-        data: { confirm: "Supprimer cette photo ?" } %>
+        data: { turbo_confirm: "Supprimer cette photo ?" } %>
     </div>
   <% end %>
 </div>
