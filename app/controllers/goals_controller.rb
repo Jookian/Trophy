@@ -12,11 +12,6 @@ class GoalsController < ApplicationController
                          .where(badge_id: @goal.badges.pluck(:id))
                          .order(created_at: :desc)
                          .first&.badge
-
-    # Les trophées cachés ne s'affichent que si l'objectif est complété
-    @show_hidden_badges = @goal_completed
-    # Si popup affichée, les badges cachés seront masqués par CSS et révélés au clic OK
-    @hide_hidden_initially = flash[:notice] == 'trophy_unlocked'
   end
 
   def add_photos

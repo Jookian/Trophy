@@ -4,31 +4,11 @@ class Goal < ApplicationRecord
   has_many :badges
   has_many_attached :photos
 
-  # Génère le chemin de l'icône SVG basé sur le nom
-  def icon_filename
-    name.downcase
-        .gsub(/['']/, '')
-        .gsub(/[àâä]/, 'a')
-        .gsub(/[éèêë]/, 'e')
-        .gsub(/[îï]/, 'i')
-        .gsub(/[ôö]/, 'o')
-        .gsub(/[ùûü]/, 'u')
-        .gsub(/ç/, 'c')
-        .gsub(/\s+/, '-')
-        .gsub(/[^a-z0-9\-]/, '')
-        .gsub(/-+/, '-')
-        .gsub(/^-|-$/, '') + '.svg'
-  end
-
-  def icon_path
-    "goal-icons/#{icon_filename}"
-  end
-
-  # Vérifie si l'utilisateur a complété 100% des trophées classiques (non-cachés)
+  # Vérifie si un utilisateur a complété 100% des trophées classiques
   def completed_by?(user)
-    visible_badges = badges.visible
-    return false if visible_badges.empty?
+    return false if badges.visible.empty?
 
-    user.user_badges.where(badge: visible_badges).count == visible_badges.count
+    validated_count = user.user_badges.where(badge: badges.visible).count
+    validated_count == badges.visible.count
   end
 end
