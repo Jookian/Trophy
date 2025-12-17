@@ -4,10 +4,10 @@
 </div>
 <%= link_to "⬅️ Retour au dashboard", dashboard_path, class: "btn btn-secondary mt-3" %>
 
-<!-- Progression -->
+<!-- Progression (uniquement les trophées classiques) -->
 <div class="progress-container">
-  <% total = @goal.badges.count %>
-  <% done = @validated_badges.count { |id| @goal.badges.pluck(:id).include?(id) } %>
+  <% total = @badges.count %>
+  <% done = @validated_badges.count { |id| @badges.pluck(:id).include?(id) } %>
   <% percent = total.zero? ? 0 : ((done.to_f / total) * 100).round %>
 
   <div class="progress-bar" style="width: <%= percent %>%"></div>
@@ -57,6 +57,53 @@
       </div>
   <% end %>
 </div>
+
+<!-- Trophées cachés (visibles uniquement après avoir complété 100% et cliqué OK) -->
+<% if @show_hidden_badges && @hidden_badges.any? %>
+  <div class="hidden-trophies-section" id="hidden-trophies" style="<%= 'display: none;' if @hide_hidden_initially %>">
+    <h2>🎉 Objectif complété ! Trophées bonus débloqués</h2>
+    <p class="hidden-trophies-subtitle">Ces trophées fun ne comptent pas dans ta progression</p>
+
+    <div class="trophy-list hidden-trophies">
+      <% @hidden_badges.each do |badge| %>
+        <div class="trophy-card trophy-card-hidden">
+          <div class="trophy-card-text">
+            <h3><%= badge.title %></h3>
+            <p><%= badge.description %></p>
+          </div>
+
+          <div class="trophy-card-action">
+            <% user_badge = current_user.user_badges.find_by(badge: badge) %>
+
+            <% if user_badge %>
+              <button
+                type="button"
+                class="validate-btn validated"
+                data-action="click->confirm#open"
+                data-confirm-form-id="delete-user-badge-<%= user_badge.id %>">
+                ↩️
+              </button>
+
+              <%= form_with model: user_badge,
+                    method: :delete,
+                    html: {
+                      id: "delete-user-badge-#{user_badge.id}",
+                      style: "display:none;"
+                    } do %>
+              <% end %>
+            <% else %>
+              <%= button_to user_badges_path(badge_id: badge.id),
+                    method: :post,
+                    class: "validate-btn" do %>
+                <%= image_tag "icon-trophy-small.svg", class: "validate-icon" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 <h3>Photos inspirantes</h3>
 

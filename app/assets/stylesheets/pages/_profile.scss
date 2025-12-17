@@ -25,3 +25,33 @@
     border-color: rgba(255, 255, 255, 0.2);
   }
 }
+
+/* Badges des objectifs complétés */
+.completed-goals-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.completed-goal-badge {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.completed-goal-icon {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0);
+}

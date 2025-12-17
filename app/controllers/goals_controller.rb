@@ -1,16 +1,23 @@
 class GoalsController < ApplicationController
    before_action :authenticate_user!
   def show
-  @goal = Goal.find(params[:id])
-  @badges = @goal.badges
-  @validated_badges = current_user.user_badges.pluck(:badge_id)
+    @goal = Goal.find(params[:id])
+    @badges = @goal.badges.visible
+    @hidden_badges = @goal.badges.hidden
+    @validated_badges = current_user.user_badges.pluck(:badge_id)
+    @goal_completed = @goal.completed_by?(current_user)
 
-  # Récupère le dernier badge débloqué par l'utilisateur pour ce goal
-  @badge = current_user.user_badges
-                       .where(badge_id: @badges.pluck(:id))
-                       .order(created_at: :desc)
-                       .first&.badge
-end
+    # Récupère le dernier badge débloqué par l'utilisateur pour ce goal
+    @badge = current_user.user_badges
+                         .where(badge_id: @goal.badges.pluck(:id))
+                         .order(created_at: :desc)
+                         .first&.badge
+
+    # Les trophées cachés ne s'affichent que si l'objectif est complété
+    @show_hidden_badges = @goal_completed
+    # Si popup affichée, les badges cachés seront masqués par CSS et révélés au clic OK
+    @hide_hidden_initially = flash[:notice] == 'trophy_unlocked'
+  end
 
   def add_photos
   @goal = current_user.goals.find(params[:id])
