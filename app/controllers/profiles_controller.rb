@@ -7,6 +7,11 @@ class ProfilesController < ApplicationController
     # Trophées remportés
     @user_badges = @user.user_badges
     @trophies_count = @user_badges.count
+
+    # Objectifs complétés (100% des 5 trophées)
+    @completed_goals = @user.user_goals.includes(:goal).select do |user_goal|
+      user_goal.goal.completed_by?(@user)
+    end.map(&:goal)
   end
 
   def edit

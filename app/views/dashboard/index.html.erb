@@ -19,6 +19,11 @@
                 <span><%= item[:progress] %>%</span>
               </div>
             </div>
+
+            <!-- Icône de l'objectif en bas à droite -->
+            <div class="goal-icon-badge">
+              <%= image_tag goal.icon_path, class: "goal-icon-svg" %>
+            </div>
           <% end %>
 
           <% if item[:goal].user_goals.find_by(user: current_user) %>
