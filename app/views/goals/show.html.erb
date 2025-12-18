@@ -1,7 +1,7 @@
-<div data-controller="confirm">
+<div class="page-goals" data-controller="confirm">
 
 <!-- Header -->
-
+<main>
 <div class="goal-show-header">
   <%= link_to dashboard_path, class: "back-link" do %>
     <%= image_tag "icon-back.svg", alt: "Retour" %>
@@ -212,4 +212,22 @@
       </div>
     </div>
   </div>
+</div>
+
+    <!-- gallerie photo -->
+
+<div
+  class="gallery-modal"
+  data-controller="gallery"
+  data-gallery-target="modal">
+
+  <button class="gallery-close" data-action="gallery#close">✕</button>
+
+  <div class="gallery-content">
+    <% @goal.photos.each do |photo| %>
+      <%= image_tag photo, class: "gallery-image" %>
+    <% end %>
+  </div>
+</div>
+</main>
 </div>

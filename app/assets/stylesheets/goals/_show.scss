@@ -1,3 +1,31 @@
+/* Page wrapper avec background pattern */
+
+.page-goals {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: image-url('profile/Pattern.png');
+    background-repeat: repeat-y;
+    background-size: 120% auto;
+    background-position: top center;
+    opacity: 0.2;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  // Mettre le contenu au-dessus du pattern
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
 /* Container goal */
 
 .goal-show-container {
@@ -45,7 +73,7 @@
 
     white-space: normal;
     word-break: normal;
-    line-height: 1.2;  
+    line-height: 1.2;
   }
 
   .back-link img {
@@ -107,9 +135,15 @@
   justify-content: space-between;
   align-items: center;
 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-bottom: 16px;
   height: 96px;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+
+  &:active {
+    transform: scale(0.95) translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
 }
 
 .trophy-card-text h3 {
@@ -467,4 +501,8 @@
   color: white;
   font-size: 28px;
   cursor: pointer;
+}
+
+main {
+padding-bottom: 50px;
 }
