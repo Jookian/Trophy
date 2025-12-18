@@ -53,7 +53,7 @@
 .goal-show-header {
   max-width: 800px;
   margin: 0 auto;
-  padding: 12 px 20px 8px;
+  padding: 12px 20px 8px;
 
   display: grid;
   grid-template-columns: 42px 1fr 42px;
@@ -201,13 +201,36 @@
 }
 
 .trophy-popup-content {
-  background: rgba(255, 255, 255, 0.95);
+  background:#C1CDFE;
   padding: 24px;
   border-radius: 20px;
   text-align: center;
-  width: 90%;
-  max-width: 320px;
+  width: 92%;
+  max-width: 360px;
   text-align: center;
+ animation: pop-in 0.4s ease-out;
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.trophy-popup-content::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  background: radial-gradient(circle, rgba(98,76,171,0.25), transparent 60%);
+  z-index: -1;
 }
 
 .trophy-popup-content h2 {
@@ -222,8 +245,8 @@
 }
 
 .trophy-icon-img {
-  width: 40px;
-  height: 40px;
+   width: 64px;
+  margin-top: -50px;
 }
 
 .popup-buttons {
@@ -236,15 +259,15 @@
 .popup-close {
   background: #624CAB;
   color: white;
-  border: none;
-  padding: 8px 14px;
+  border: 2px solid white;
+  padding: 10px 14px;
   border-radius: 8px;
   cursor: pointer;
 }
 
 .popup-share {
   background: white;
-  border: 1px solid #624CAB;
+  border: 2px solid #624CAB;
   color: #624CAB;
   padding: 8px 14px;
   border-radius: 8px;
@@ -252,12 +275,12 @@
 }
 
 .trophy-card-popup {
-  background: rgba(255, 255, 255, 0.95);
+  background: #C1CDFE;
   padding: 14px;
   border-radius: 12px;
   margin-bottom: 20px;
-
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 16px rgba(98, 76, 171, 0.25);
+  border: 2px solid #624CAB
 }
 
 .trophy-card-popup h3 {
@@ -271,7 +294,11 @@
   position: fixed;
   inset: 0;
   display: none;
-  background: rgba(0, 0, 0, 0.5);
+
+  background: rgba(0, 0, 0, 0.45);
+
+  align-items: center;
+  justify-content: center;
 }
 
 .confirm-popup.is-visible {
@@ -282,14 +309,35 @@
 
 .confirm-popup-content {
   background: white;
-  padding: 16px;
+  padding: 20px;
+  border-radius: 14px;
+
+  border: 2px solid #624CAB;
+
+  text-align: center;
+  max-width: 300px;
+  width: 90%;
 }
+
+.confirm-buttons button {
+  border: 1.5px solid #624CAB;
+  border-radius: 10px;
+  background: transparent;
+  color: #624CAB;
+}
+
 
 /* Carroussel photo */
 
 .container-photos {
-  padding: 0 18px 24px;
-  margin-top: -12px;
+  margin-top: 10px;
+  padding: 14px;
+
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
 .custom-upload-button {
@@ -320,7 +368,7 @@
   display: flex;
   gap: 12px;
   overflow-x: auto;
-  padding-bottom: 6px;
+  padding-bottom: 4px;
 }
 
 .photo-thumb {
@@ -341,12 +389,49 @@
 
 /* Section des trophées cachés */
 .hidden-trophies-section {
-  margin-top: 30px;
+ margin-top: 30px;
   padding: 20px 16px;
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+
+  background: linear-gradient(
+    135deg,
+    #FFE38A 0%,
+    #FFD166 100%
+  );
+
   border-radius: 16px;
   margin-left: 16px;
   margin-right: 16px;
+  border: 2px solid rgba(255, 200, 80, 0.6);
+  text-align: center;
+}
+
+.hidden-kicker {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: rgba(80, 50, 0, 0.75);
+  margin-bottom: 6px;
+}
+
+.hidden-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #3B2F00;
+  margin: 0 0 8px 0;
+}
+
+.hidden-subtitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #5A4300;
+  margin: 0 0 12px 0;
+}
+
+.hidden-description {
+  font-size: 14px;
+  line-height: 1.45;
+  color: #5A4300;
+  margin: 0;
 }
 
 .hidden-trophies-section h2 {
@@ -356,22 +441,20 @@
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-.hidden-trophies-subtitle {
-  color: white;
-  font-size: 14px;
-  opacity: 0.9;
-  margin: 0 0 16px 0;
-}
-
 .trophy-card-hidden {
   background: rgba(255, 255, 255, 0.25);
   border: 2px dashed rgba(255, 255, 255, 0.5);
 }
 
-.hidden-trophies .trophy-card {
-  margin: 12px 0;
+.hidden-title::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 3px;
+  background: rgba(90, 67, 0, 0.35);
+  margin: 10px auto 0;
+  border-radius: 2px;
 }
-
 /* Section gallerie photo */
 
 .gallery-modal {
