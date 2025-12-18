@@ -55,7 +55,7 @@
   <div class="card mb-3 mx-auto" style="max-width: 420px;">
     <div class="card-body text-center">
 
-      <h5 class="card-title mb-2">Phrase de motivation</h5>
+      <h5 class="card-title mb-2">Ma phrase de motivation</h5>
 
       <p class="text-muted">
         <%= @user.motivation_text.presence || "Non renseignée" %>
@@ -89,8 +89,7 @@
             <div class="completed-goal-badge" onclick="toggleBadgeTooltip(this)">
               <%= image_tag goal.icon_path, class: "completed-goal-icon" %>
               <div class="badge-tooltip">
-                <span><%= "Badge de réussite pour #{goal.name}".split.each_slice(4).map { |words| words.join(' ') }.join('<br>').html_safe %></span>
-                <button class="tooltip-close" onclick="event.stopPropagation(); closeBadgeTooltip(this)">✕</button>
+                <span><%= "Badge de réussite pour #{goal.name}" %></span>
               </div>
             </div>
           <% end %>
@@ -167,10 +166,6 @@
         tooltip.classList.add('tooltip-left');
       }
     }
-  }
-
-  function closeBadgeTooltip(btn) {
-    btn.closest('.completed-goal-badge').classList.remove('tooltip-active');
   }
 
   // Fermer les tooltips au clic en dehors
