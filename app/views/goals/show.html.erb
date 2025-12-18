@@ -42,7 +42,7 @@
       class="validate-btn"
       data-action="click->confirm#open"
       data-confirm-form-id="delete-user-badge-<%= user_badge.id %>">
-      ↩️
+      ✔️
     </button>
 
     <!-- Form caché pour la suppression -->
@@ -71,11 +71,13 @@
 <!-- Trophées cachés (visibles uniquement si objectif complété à 100%) -->
 <% if @goal_completed && @hidden_badges.any? %>
   <div class="hidden-trophies-section">
-    <h2>🎉 Bravo ! Ton objectif est complété à 100%</h2>
-    <h3>Nouveauté débloquée : les trophées BONUS</h3>
-    <p class="hidden-trophies-subtitle">
-      Ils ne comptent pas dans ta progression globale : c'est que du bonus, juste pour le fun
-    </p>
+    <p class="hidden-kicker">🎉 Bravo ! Ton objectif est complété à 100%</p>
+    
+    <h3 class="hidden-subtitle">Nouveauté débloquée : les trophées BONUS</h3>
+    <p class="hidden-description">
+    Ils ne comptent pas dans ta progression globale.<br>
+    Juste du bonus, pour le fun ✨
+  </p>
 
     <div class="trophy-list-wrapper">
       <div class="trophy-list hidden-trophies">
@@ -95,7 +97,7 @@
                   class="validate-btn"
                   data-action="click->confirm#open"
                   data-confirm-form-id="delete-user-badge-<%= user_badge.id %>">
-                  ↩️
+                  ✔️
                 </button>
                 <%= form_with model: user_badge,
                       method: :delete,
@@ -180,7 +182,7 @@
 </div>
 
     <h2> Félicitations <%= current_user.name.presence || "Champion" %>  !</h2>
-    <p class="subtitle">Vous avez reçu un succès</p>
+    <p class="subtitle">Nouveau Trophy débloqué</p>
 
     <div class="trophy-card-popup">
   <% if @badge.present? %>
@@ -194,7 +196,7 @@
       <button class="popup-close" data-action="trophy-popup#close">OK</button>
 
       <button class="popup-share">
-        Partager à un ami
+        Partager à un(e) ami(e)
       </button>
     </div>
   </div>
@@ -209,21 +211,5 @@
         <button data-action="confirm#close">Non</button>
       </div>
     </div>
-  </div>
-</div>
-
-    <!-- gallerie photo -->
-
-<div
-  class="gallery-modal"
-  data-controller="gallery"
-  data-gallery-target="modal">
-
-  <button class="gallery-close" data-action="gallery#close">✕</button>
-
-  <div class="gallery-content">
-    <% @goal.photos.each do |photo| %>
-      <%= image_tag photo, class: "gallery-image" %>
-    <% end %>
   </div>
 </div>
