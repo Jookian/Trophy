@@ -119,13 +119,15 @@
   </div>
 <% end %>
 
+<div class="container-photos">
+
 <%= form_with url: "/goals/#{@goal.id}/photos",
               method: :post,
               local: true,
               html: { multipart: true, class: "upload-form" } do %>
 
   <label for="photos-input" class="custom-upload-button">
-    📷 <span>Ajouter des photos</span>
+  ➕​ Ajouter des photos
   </label>
 
   <%= file_field_tag "photos[]",
@@ -136,12 +138,34 @@
 
 <% end %>
 
-<div class="photos-carousel">
-  <% @goal.photos.each do |photo| %>
-    <%= link_to "/goals/#{@goal.id}/gallery" do %>
-      <%= image_tag photo, height: 120 %>
+<div data-controller="gallery">
+
+  <div class="photos-carousel">
+    <% @goal.photos.each_with_index do |photo, index| %>
+      <%= image_tag photo,
+            height: 120,
+            class: "carousel-photo",
+            data: {
+              action: "click->gallery#open",
+              gallery_index_value: index
+            } %>
     <% end %>
-  <% end %>
+  </div>
+
+  <div
+    class="gallery-modal"
+    data-gallery-target="modal">
+
+    <button class="gallery-close" data-action="gallery#close">✕</button>
+
+    <div class="gallery-content">
+      <% @goal.photos.each do |photo| %>
+        <%= image_tag photo, class: "gallery-image" %>
+      <% end %>
+    </div>
+
+  </div>
+
 </div>
 
 <div id="trophy-popup"
@@ -185,5 +209,21 @@
         <button data-action="confirm#close">Non</button>
       </div>
     </div>
+  </div>
+</div>
+
+    <!-- gallerie photo -->
+
+<div
+  class="gallery-modal"
+  data-controller="gallery"
+  data-gallery-target="modal">
+
+  <button class="gallery-close" data-action="gallery#close">✕</button>
+
+  <div class="gallery-content">
+    <% @goal.photos.each do |photo| %>
+      <%= image_tag photo, class: "gallery-image" %>
+    <% end %>
   </div>
 </div>

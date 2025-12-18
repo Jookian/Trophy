@@ -25,7 +25,7 @@
 .goal-show-header {
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 12 px 20px 8px;
 
   display: grid;
   grid-template-columns: 42px 1fr 42px;
@@ -35,6 +35,7 @@
     grid-column: 2;
     text-align: center;
     font-size: 26px;
+    font-weight: 700;
     color: white;
     margin: 0;
 
@@ -44,6 +45,7 @@
 
     white-space: normal;
     word-break: normal;
+    line-height: 1.2;  
   }
 
   .back-link img {
@@ -249,6 +251,60 @@
   padding: 16px;
 }
 
+/* Carroussel photo */
+
+.container-photos {
+  padding: 0 18px 24px;
+  margin-top: -12px;
+}
+
+.custom-upload-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 14px;
+  margin: 12px auto;
+
+  background: transparent;
+  border: 2px solid #624CAB;
+  border-radius: 14px;
+
+  color: #624CAB;
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(98, 76, 171, 0.08);
+  }
+}
+
+.photos-carousel {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.photo-thumb {
+  border: none;
+  background: none;
+  padding: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+
+  img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+}
+
 /* Section des trophées cachés */
 .hidden-trophies-section {
   margin-top: 30px;
@@ -280,4 +336,52 @@
 
 .hidden-trophies .trophy-card {
   margin: 12px 0;
+}
+
+/* Section gallerie photo */
+
+.gallery-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: none;
+  z-index: 3000;
+}
+
+.gallery-modal.is-visible {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-content {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  max-width: 100%;
+  padding: 20px;
+}
+
+.gallery-image {
+  width: 80vw;
+  max-width: 360px;
+  height: 70vh;
+
+  object-fit: cover;
+  border-radius: 16px;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+.gallery-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
 }
