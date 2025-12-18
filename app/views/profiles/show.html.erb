@@ -86,8 +86,12 @@
 
         <div class="completed-goals-badges">
           <% @completed_goals.each do |goal| %>
-            <div class="completed-goal-badge" title="<%= goal.name %>">
+            <div class="completed-goal-badge" onclick="toggleBadgeTooltip(this)">
               <%= image_tag goal.icon_path, class: "completed-goal-icon" %>
+              <div class="badge-tooltip">
+                <span><%= "Badge de réussite pour #{goal.name}".split.each_slice(4).map { |words| words.join(' ') }.join('<br>').html_safe %></span>
+                <button class="tooltip-close" onclick="event.stopPropagation(); closeBadgeTooltip(this)">✕</button>
+              </div>
             </div>
           <% end %>
         </div>
@@ -106,25 +110,26 @@
   </div>
 
   <!-- LISTE DES TROPHÉES -->
-  <div class="card mb-3 mx-auto" style="max-width: 420px;">
-    <div class="card-body text-center">
-      <h5 class="card-title mb-3">Mes trophées</h5>
+  <div class="trophies-section mx-auto" style="max-width: 420px;">
+    <h5 class="card-title mb-3 text-center">Mes trophées</h5>
 
-      <% if @user_badges.any? %>
-        <ul class="list-group list-group-flush text-start">
-          <% @user_badges.each do |user_badge| %>
-            <li class="list-group-item text-center">
-              <strong><%= user_badge.badge.title %></strong><br>
-              <small class="text-muted">
-                <%= user_badge.badge.description %>
-              </small>
-            </li>
-          <% end %>
-        </ul>
-      <% else %>
-        <p class="text-muted mb-0">Aucun trophée pour le moment.</p>
-      <% end %>
-    </div>
+    <% if @user_badges.any? %>
+      <div class="trophies-grid">
+        <% @user_badges.each do |user_badge| %>
+          <div class="trophy-card-profile">
+            <div class="trophy-goal-badge">
+              <%= image_tag user_badge.badge.goal.icon_path, class: "trophy-goal-icon" %>
+            </div>
+            <div class="trophy-card-content">
+              <strong class="trophy-title"><%= user_badge.badge.title %></strong>
+              <small class="trophy-description"><%= user_badge.badge.description %></small>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-muted text-center mb-0">Aucun trophée pour le moment.</p>
+    <% end %>
   </div>
 </div>
 
@@ -134,4 +139,46 @@
     const el = document.getElementById(id);
     el.style.display = el.style.display === "none" ? "block" : "none";
   }
+
+  function toggleBadgeTooltip(badge) {
+    // Fermer tous les autres tooltips
+    document.querySelectorAll('.completed-goal-badge.tooltip-active').forEach(b => {
+      if (b !== badge) b.classList.remove('tooltip-active');
+    });
+
+    const tooltip = badge.querySelector('.badge-tooltip');
+    tooltip.classList.remove('tooltip-left', 'tooltip-right');
+
+    // Toggle le tooltip actuel
+    badge.classList.toggle('tooltip-active');
+
+    // Ajuster la position si le tooltip dépasse
+    if (badge.classList.contains('tooltip-active')) {
+      const rect = badge.getBoundingClientRect();
+      const tooltipRect = tooltip.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+
+      // Si dépasse à gauche
+      if (tooltipRect.left < 10) {
+        tooltip.classList.add('tooltip-right');
+      }
+      // Si dépasse à droite
+      else if (tooltipRect.right > viewportWidth - 10) {
+        tooltip.classList.add('tooltip-left');
+      }
+    }
+  }
+
+  function closeBadgeTooltip(btn) {
+    btn.closest('.completed-goal-badge').classList.remove('tooltip-active');
+  }
+
+  // Fermer les tooltips au clic en dehors
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.completed-goal-badge')) {
+      document.querySelectorAll('.completed-goal-badge.tooltip-active').forEach(b => {
+        b.classList.remove('tooltip-active');
+      });
+    }
+  });
 </script>
