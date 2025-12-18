@@ -2,7 +2,30 @@
   padding: 20px;
   padding-top: 20px;
   padding-bottom: 90px;
+
+    &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: image-url('profile/Pattern.png');
+    background-repeat: repeat-y;
+    background-size: 120% auto;
+    background-position: top center;
+    opacity: 0.2;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 }
+
+
 
 .categories-container h1,
 .categories-container h2 {
