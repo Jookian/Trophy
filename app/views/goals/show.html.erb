@@ -214,20 +214,5 @@
   </div>
 </div>
 
-    <!-- gallerie photo -->
-
-<div
-  class="gallery-modal"
-  data-controller="gallery"
-  data-gallery-target="modal">
-
-  <button class="gallery-close" data-action="gallery#close">✕</button>
-
-  <div class="gallery-content">
-    <% @goal.photos.each do |photo| %>
-      <%= image_tag photo, class: "gallery-image" %>
-    <% end %>
-  </div>
-</div>
 </main>
 </div>

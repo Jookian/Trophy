@@ -15,14 +15,8 @@
     background-size: 120% auto;
     background-position: top center;
     opacity: 0.2;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
-  }
-
-  // Mettre le contenu au-dessus du pattern
-  >* {
-    position: relative;
-    z-index: 1;
   }
 }
 
@@ -480,7 +474,8 @@
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   display: none;
-  z-index: 3000;
+  z-index: 9999;
+  isolation: isolate;
 }
 
 .gallery-modal.is-visible {
@@ -512,11 +507,18 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  background: none;
+  background: rgba(0, 0, 0, 0.4);
   border: none;
   color: white;
   font-size: 28px;
   cursor: pointer;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 main {
