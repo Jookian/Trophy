@@ -15,7 +15,7 @@
 
     <button class="btn-profile"
             onclick="toggleForm('photo-form')">
-      Changer la photo
+      Changer ma photo
     </button>
 
     <div id="photo-form" class="mt-3" style="display:none;">
@@ -82,7 +82,7 @@
   <% if @completed_goals.any? %>
     <div class="card mb-3 mx-auto completed-goals-card" style="max-width: 420px;">
       <div class="card-body text-center">
-        <h5 class="card-title mb-3">Récap' de votre avancée</h5>
+        <h5 class="card-title mb-3">Mes badges</h5>
 
         <div class="completed-goals-badges">
           <% @completed_goals.each do |goal| %>
@@ -101,7 +101,7 @@
   <!-- COMPTEUR DE TROPHÉES -->
   <div class="card text-center mb-3 mx-auto" style="max-width: 420px;">
     <div class="card-body">
-      <h5 class="card-title">Trophées remportés</h5>
+      <h5 class="card-title">Trophy remportés</h5>
       <p class="display-6 fw-bold mb-0">
         <%= @trophies_count %>
       </p>
@@ -110,7 +110,7 @@
 
   <!-- LISTE DES TROPHÉES -->
   <div class="trophies-section mx-auto" style="max-width: 420px;">
-    <h5 class="card-title mb-3 text-center">Mes trophées</h5>
+    <h5 class="card-title mb-3 text-center">Mes Trophy</h5>
 
     <% if @user_badges.any? %>
       <div class="trophies-grid">

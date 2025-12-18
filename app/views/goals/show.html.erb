@@ -71,12 +71,12 @@
 <!-- Trophées cachés (visibles uniquement si objectif complété à 100%) -->
 <% if @goal_completed && @hidden_badges.any? %>
   <div class="hidden-trophies-section">
-    <p class="hidden-kicker">🎉 Bravo ! Ton objectif est complété à 100%</p>
-    
-    <h3 class="hidden-subtitle">Nouveauté débloquée : les trophées BONUS</h3>
+    <p class="hidden-kicker">🎉 Objectif validé à 100 %</p>
+
+    <h3 class="hidden-subtitle">Trophy secrets débloqués</h3>
     <p class="hidden-description">
     Ils ne comptent pas dans ta progression globale.<br>
-    Juste du bonus, pour le fun ✨
+    Juste des trophées pour flex un peu ✨
   </p>
 
     <div class="trophy-list-wrapper">
@@ -204,7 +204,7 @@
 </div>
 <div class="confirm-popup" data-confirm-target="popup">
     <div class="confirm-popup-content">
-      <p>Êtes-vous sûr de vouloir annuler ce trophy ?</p>
+      <p>Es-tu sûr de vouloir annuler ce Trophy ?</p>
 
       <div class="confirm-buttons">
         <button data-action="confirm#confirm">Oui</button>
