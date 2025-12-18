@@ -1,6 +1,6 @@
 
   <div class="dashboard-container">
-    <h2 class="dashboard-title">Vos objectifs en cours</h2>
+    <h2 class="dashboard-title">Mes objectifs</h2>
 
     <div class="goals-grid">
       <% @goal_progress.each do |item| %>
@@ -45,7 +45,7 @@
   <div class="welcome-overlay" id="welcome-overlay">
     <div class="welcome-card">
       <p class="welcome-text"><%= current_user.motivation_text.presence || "Bienvenue sur Trophy !" %></p>
-      <button class="welcome-btn" onclick="document.getElementById('welcome-overlay').style.display='none'">OK</button>
+      <button class="welcome-btn" onclick="document.getElementById('welcome-overlay').style.display='none'">Ok</button>
     </div>
   </div>
 <% end %>
